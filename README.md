@@ -3,6 +3,8 @@ Rails4 Application Template
 
 Base for usual Rails applications.
 
+[![Build Status](https://travis-ci.org/miyamae/rails-startup.svg)](https://travis-ci.org/miyamae/rails-startup)
+
 ## Description
 
 * Bootstrap & AdminLTE & Font Awasome - CSS framework
