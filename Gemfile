@@ -60,6 +60,10 @@ gem 'schema_plus'
 gem 'mail-iso-2022-jp'
 gem 'browser'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'powder'
