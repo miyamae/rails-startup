@@ -1,14 +1,14 @@
 Rails4 Application Template
 ===========================
 
-Base for usual Rails applications.
-
 [![Build Status](https://travis-ci.org/miyamae/rails-startup.svg)](https://travis-ci.org/miyamae/rails-startup)
+
+Base for usual Rails applications.
 
 ## Description
 
 * Bootstrap & AdminLTE & Font Awasome - CSS framework
-* Devise & OmniAuth & CanCan - authentication
+* Devise & OmniAuth & CanCanCan - authentication
 * Paperclip - File upload (local or S3)
 * RSpec & Turnip & Poltergeist - E2E testing
 * Capistrano - deploying
