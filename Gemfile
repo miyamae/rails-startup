@@ -60,7 +60,7 @@ gem 'schema_plus'
 gem 'mail-iso-2022-jp'
 gem 'browser'
 
-group :production do
+group :production, :staging do
   gem 'rails_12factor'
 end
 
