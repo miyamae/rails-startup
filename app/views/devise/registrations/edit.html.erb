@@ -1,0 +1,64 @@
+<%- @title = 'アカウント設定' -%>
+<%- add_breadcrumb 'マイページ', user_path(current_user) -%>
+<%= render 'settings/sidebar' %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+  html: { method: :put, class: 'form-horizontal' }) do |f| %>
+  <%= render 'partial/errors', record: resource %>
+  <%- if current_user.encrypted_password.present? -%>
+    <%= f.bootstrap_password :current_password, placeholder: '現在設定されているパスワード' %>
+  <%- end -%>
+  <div class="panel panel-default change-email">
+    <div class="panel-heading">
+      <h3 class="panel-title">メールアドレス<%= current_user.email.present? ? '変更' : '設定' %></h3>
+    </div>
+    <div class="panel-body">
+      <%- if current_user.email.blank? -%>
+        <div class="alert alert-warning">
+          メールアドレスが設定されていません。設定してください。
+        </div>
+      <%- end -%>
+      <%= f.bootstrap_text :email, autocomplete: 'off' %>
+      <%- if resource.unconfirmed_email.present? -%>
+        <%= f.bootstrap_static ' ', "#{resource.unconfirmed_email} (確認中)",
+          help: '手続き案内メールを送信しました。ご確認ください。' %>
+      <%- end -%>
+    </div>
+  </div>
+  <div class="panel panel-default change-password">
+    <div class="panel-heading">
+      <h3 class="panel-title">パスワード<%= current_user.encrypted_password.present? ? '変更' : '設定' %></h3>
+    </div>
+    <div class="panel-body">
+      <%- if current_user.encrypted_password.blank? -%>
+        <div class="alert alert-warning">
+          パスワードが設定されていません。設定してください。
+        </div>
+      <%- end -%>
+      <%= f.bootstrap_password :password, placeholder: "#{'変更するパスワード' if current_user.encrypted_password.present?}", autocomplete: 'off' %>
+      <%= f.bootstrap_password :password_confirmation, autocomplete: 'off' %>
+    </div>
+  </div>
+  <%= f.bootstrap_submit %>
+<% end %>
+<p>&nbsp;</p>
+<div class="panel panel-danger user-delete">
+  <div class="panel-heading">
+    <h3 class="panel-title">アカウント削除（脱退）</h3>
+  </div>
+  <div class="panel-body">
+    <p>この操作を実行するとログインできなくなります。関連するデータも含めて削除され、元に戻すことはできません。</p>
+    <%= form_tag registration_path(resource_name), method: :delete do %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="confirmed" value="on"> 理解しました
+        </label>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-4">
+          <input type="password" name="password" class="form-control" placeholder="パスワード">
+        </div>
+      </div>
+      <button class="btn btn-danger" data-confirm="アカウントを削除（脱退）します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"><i class="fa fa-trash-o"></i> 削除</button>
+    <%- end -%>
+  </div>
+</div>

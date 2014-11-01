@@ -1,0 +1,41 @@
+<%- @title = 'ログイン' -%>
+  <div class="row">
+    <div class="col-sm-7">
+      <h2>ログイン</h2>
+      <div class="panel panel-default">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+            html: {class: 'form-horizontal'}) do |f| %>
+          <div class="panel-body">
+            <%= f.bootstrap_text :email %>
+            <%= f.bootstrap_password :password %>
+            <% if devise_mapping.rememberable? -%>
+              <div class="row">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <div class="checkbox">
+                    <label>
+                      <%= f.check_box :remember_me %>
+                      次回から自動的にログイン
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <% end -%>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-primary btn-solid">ログイン</button>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <p><%= link_to "パスワードをお忘れの方 ≫", new_password_path(resource_name) %></p>
+    </div>
+    <div class="col-sm-5">
+      <%= render 'devise/omniauth' %>
+      <h2>ユーザー登録</h2>
+      <p><%= link_to 'ユーザー登録 ≫', new_registration_path(resource_name) %></p>
+    </div>
+  </div>
+</div>

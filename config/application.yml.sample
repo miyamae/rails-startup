@@ -1,0 +1,42 @@
+#= Application Setting
+
+# URLのホスト名(FQDN)
+# host_name: "rails-startup.herokuapp.com"
+
+# メール送信元、問い合わせメール送信先
+email: "SampleApp <support@example.com>"
+
+# 例外発生メール等の送信先
+system_email: "root@localhost"
+
+# ユーザー認証／管理画面でhttpsを使用するか
+use_ssl: "false"
+
+# メール送信SMTPサーバの設定
+smtp_address: "localhost"
+smtp_port: "25"
+
+# アップロード画像の保存先
+uploads_storage: "file"
+#uploads_storage: "s3"
+#uploads_s3_host_name: "s3-ap-northeast-1.amazonaws.com"
+#uploads_s3_bucket:
+#uploads_aws_access_key_id:
+#uploads_aws_secret_access_key:
+
+# OAuth認証のための外部サービスのキーとシークレット
+#facebook_app_id:
+#facebook_app_secret:
+#twitter_api_key:
+#twitter_api_secret:
+#google_client_id:
+#google_client_secret:
+
+production:
+  #db_adapter: "postgresql"
+  #db_encoding: "unicode"
+  #db_template: "template0"
+  #db_database:
+  #db_username:
+  #db_password:
+  #db_pool: 5

@@ -1,0 +1,39 @@
+development:
+  adapter: <%= ENV['db_adapter'] || 'sqlite3' %>
+  encoding: <%= ENV['db_encoding'] %>
+  template: <%= ENV['db_template'] %>
+  database: <%= ENV['db_database'] || 'db/development.sqlite3' %>
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+  pool: <%= ENV['db_pool'] %>
+  timeout: <%= ENV['db_timeout'] %>
+
+test:
+  adapter: <%= ENV['db_adapter'] || 'sqlite3' %>
+  encoding: <%= ENV['db_encoding'] %>
+  template: <%= ENV['db_template'] %>
+  database: <%= ENV['db_database'] || 'db/test.sqlite3' %>
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+  pool: <%= ENV['db_pool'] %>
+  timeout: <%= ENV['db_timeout'] %>
+
+staging:
+  adapter: <%= ENV['db_adapter'] || 'sqlite3' %>
+  encoding: <%= ENV['db_encoding'] %>
+  template: <%= ENV['db_template'] %>
+  database: <%= ENV['db_database'] || 'db/staging.sqlite3' %>
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+  pool: <%= ENV['db_pool'] %>
+  timeout: <%= ENV['db_timeout'] %>
+
+production:
+  adapter: <%= ENV['db_adapter'] || 'sqlite3' %>
+  encoding: <%= ENV['db_encoding'] %>
+  template: <%= ENV['db_template'] %>
+  database: <%= ENV['db_database'] || 'db/production.sqlite3' %>
+  username: <%= ENV['db_username'] %>
+  password: <%= ENV['db_password'] %>
+  pool: <%= ENV['db_pool'] %>
+  timeout: <%= ENV['db_timeout'] %>

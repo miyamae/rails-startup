@@ -1,0 +1,83 @@
+// Admin defalut style
+
+.sysmsg {
+  position: fixed;
+  top: 40px;
+  left: 10%;
+  width: 80%;
+  z-index: 9999;
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+}
+
+.field_with_errors {
+  color: #f00;
+}
+
+.field_with_errors input, .field_with_errors textarea {
+  background: #fee;
+}
+
+a[target="_blank"] {
+  text-decoration: none;
+  &:hover, &:focus {
+    text-decoration: underline;
+    &:after {
+      text-decoration: none;
+    }
+  }
+  &:after {
+    font-family: "FontAwesome";
+    content: "\f08e";
+    margin: 0 5px;
+    color: #ccc;
+    font-size: 80%;
+    display: inline-block;
+  }
+}
+
+a.noext[target="_blank"]:after {
+  content: "\f08e";
+  margin: 0;
+}
+
+.form-control {
+  color: @text-color;
+}
+::-webkit-input-placeholder, {
+    color: #bbb !important;
+}
+::-moz-placeholder {
+    color: #bbb !important;
+}
+
+.nav-tabs li.active a {
+  color: @text-color;
+  &:hover {
+    color: @text-color;
+  }
+}
+
+.checkbox {
+  label {
+    padding-left: 0;
+  }
+}
+
+.checkbox-item {
+  label {
+    font-weight: normal;
+  }
+}
+
+.box .table > thead > tr > th {
+  border-bottom: none;
+}
+
+footer {
+  border-top: 1px solid @box-border-color;
+  padding: 15px;
+  background: #fff;
+  color: #aaa;
+}

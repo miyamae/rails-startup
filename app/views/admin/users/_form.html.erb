@@ -1,0 +1,20 @@
+<%= render 'partial/errors', record: record %>
+<%= form_for([:admin, record], html: {class: 'form-horizontal edit-form'}) do |f| %>
+  <div class="nav-tabs-custom">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab_1" data-toggle="tab">基本情報</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab_1">
+        <%= f.bootstrap_text :email %>
+        <%= f.bootstrap_text :name %>
+        <%= f.bootstrap_text :nick_name %>
+        <%= f.bootstrap_paperclip :image, :avater_sm %>
+        <%= f.bootstrap_collection_checkboxes :role_ids, Role.all, :id, :name %>
+        <%= f.bootstrap_password :password, autocomplete: 'off' %>
+        <%= f.bootstrap_password :password_confirmation, autocomplete: 'off' %>
+      </div>
+      <%= f.bootstrap_submits %>
+    </div>
+  </div>
+<%- end -%>

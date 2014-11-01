@@ -1,0 +1,13 @@
+<%- @title = 'パスワードを忘れた方' -%>
+<%- add_breadcrumb 'ログイン', new_user_session_path -%>
+<p>パスワードの再設定方法について、メールでご案内します。</p>
+<%= render 'partial/errors', record: resource %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name),
+  html: { method: :post, class: 'form-horizontal' }) do |f| %>
+  <%= f.bootstrap_text :email %>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <button type="submit" class="btn btn-primary">送信</button>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,36 @@
+<%= render 'settings/sidebar' %>
+
+<p>外部サービスアカウントとの関連付けを設定すると、ログインが簡単になります。</p>
+
+<%- if ENV['facebook_app_id'].present? -%>
+  <h2>Facebookアカウント</h2>
+  <%- if current_user.facebook_uid.present? -%>
+    <p>すでにFacebookアカウントと関連付けられています。</p>
+    <a href="<%= settings_oauth_remove_path(:facebook) %>" class="btn btn-default btn-danger">解除する</a>
+  <%- else -%>
+    <p>Facebookアカウントと関連付けられていません。</p>
+    <a href="<%= redirect_oauth_path(:facebook) %>" class="btn btn-default btn-primary">関連付ける</a>
+  <%- end -%>
+<%- end -%>
+
+<%- if ENV['twitter_api_key'].present? -%>
+  <h2>Twitterアカウント</h2>
+  <%- if current_user.twitter_uid.present? -%>
+    <p>すでにTwitterアカウントと関連付けられています。</p>
+    <a href="<%= settings_oauth_remove_path(:twitter) %>" class="btn btn-default btn-danger">解除する</a>
+  <%- else -%>
+    <p>Twitterアカウントと関連付けられていません。</p>
+    <a href="<%= redirect_oauth_path(:twitter) %>" class="btn btn-default btn-primary">関連付ける</a>
+  <%- end -%>
+<%- end -%>
+
+<%- if ENV['google_client_id'].present? -%>
+  <h2>Googleアカウント</h2>
+  <%- if current_user.google_uid.present? -%>
+    <p>すでにGoogleアカウントと関連付けられています。</p>
+    <a href="<%= settings_oauth_remove_path(:google) %>" class="btn btn-default btn-danger">解除する</a>
+  <%- else -%>
+    <p>Googleアカウントと関連付けられていません。</p>
+    <a href="<%= redirect_oauth_path(:google_oauth2) %>" class="btn btn-default btn-primary">関連付ける</a>
+  <%- end -%>
+<%- end -%>

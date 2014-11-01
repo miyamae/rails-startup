@@ -1,0 +1,24 @@
+<%= @resource.screen_name %> 様
+
+<%- if @resource.unconfirmed_email -%>
+いつも<%= Const::PRODUCT %>をご利用いただきありがとうございます。
+
+メールアドレス <%= @resource.unconfirmed_email %>
+への変更のリクエストを受け付けました。
+登録を完了するには、次のURLへアクセスしてください。
+<%- else -%>
+<%= Const::PRODUCT %>へようこそ！
+
+ユーザー登録の申請を受け付けました。
+登録を完了するには、次のURLへアクセスしてください。
+<%- end -%>
+
+<%= confirmation_url @resource, confirmation_token: @token %>
+
+
+※このメールに心当たりがない場合は、大変お手数ですが、
+何も行わずにこのメールを破棄して頂きますようにお願い致します
+
+--
+<%= Const::PRODUCT %>
+<%= ENV['email'] %>

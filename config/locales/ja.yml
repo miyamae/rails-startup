@@ -1,0 +1,114 @@
+ja:
+  date:
+    formats:
+      default: "%Y/%-m/%-d"
+      short: "%-m/%-d"
+      long: "%Y年%-m月%-d日(%a)"
+    order:
+      - :year
+      - :month
+      - :day
+    day_names: [日曜日, 月曜日, 火曜日, 水曜日, 木曜日, 金曜日, 土曜日]
+    abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+    month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+    abbr_month_names: [~, 1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+  time:
+    formats:
+      default: "%Y/%-m/%-d %H:%M"
+      short: "%y/%-m/%-d %H:%M"
+      long: "%Y年%-m月%-d日(%a) %H時%M分%S秒 %Z"
+    am: "午前"
+    pm: "午後"
+  number:
+    human:
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "バイト"
+            other: "バイト"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+
+  views:
+    pagination:
+      truncate: "…"
+      previous: <span class="fa fa-angle-left"></span>
+      next: <span class="fa fa-angle-right"></span>
+      first: <span class="fa fa-angle-double-left"></span>
+      last: <span class="fa fa-angle-double-right"></span>
+
+  activerecord: &model_i18n
+    errors:
+      format:
+        separator: ""
+      template:
+        header:
+#          one: "%{model}にエラーが発生しました。"
+#          other: "%{model}に{count}つのエラーが発生しました。"
+          one: "入力に問題があります"
+          other: "入力に問題があります"
+#        body: "次の項目を確認してください。"
+        body: ""
+      messages:
+        record_invalid: "%{errors}"
+        inclusion: "は使用できません。"
+        exclusion: "は使用できません。"
+        reserved: "は使用できません。"
+        invalid: "の書式が正しくありません。"
+        confirmation: "確認入力の内容が一致しません。"
+        accepted: "を受諾してください。"
+        empty: "を入力してください。"
+        blank: "を入力してください。"
+        too_long: "は%{count}文字以内で入力してください。"
+        too_short: "は%{count}文字以上で入力してください。"
+        wrong_length: "は%{count}文字で入力してください。"
+        taken: "はすでに登録されているため使えません。"
+        not_a_number: "は数値で入力してください。"
+        greater_than: "は%{count}より大きくしてください。"
+        greater_than_or_equal_to: "は%{count}以上にしてください。"
+        equal_to: "は%{count}にしてください。"
+        less_than: "は%{count}より小さくしてください。"
+        less_than_or_equal_to: "は%{count}以下にしてください。"
+        odd: "は奇数にしてください。"
+        even: "は偶数にしてください。"
+        too_large: "はサイズ %{count}以内のファイルを指定してください。"
+        invalid_content_type: "対応していないファイル形式です。"
+        child_item: "「%{item}」の %{attribute}"
+
+    models:
+      user: ユーザー
+
+    attributes:
+      user:
+        id: ID
+        email: Eメール
+        name: ユーザー名
+        key: 固有キー
+        nick_name: ニックネーム
+        bio: 自己紹介
+        password: パスワード
+        plain_password: パスワード
+        password_confirmation: パスワード確認
+        remember_me: ログイン状態を保存する
+        current_password: 現在のパスワード
+        sign_in_count: ログイン回数
+        current_sign_in_at: 今回ログイン日時
+        current_sign_in_ip: 今回アクセス元
+        last_sign_in_at: 前回ログイン日時
+        last_sign_in_ip: 前回アクセス元
+        image: 画像
+        role_ids: 権限
+        roles: 権限
+        created_at: 登録日時
+        updated_at: 更新日時
+      contact:
+        name: お名前
+        company: 会社名
+        email: メールアドレス
+        phone: 電話番号
+        body: お問い合わせ内容
+
+  activemodel: *model_i18n

@@ -1,0 +1,81 @@
+<%- content_for :pagetool do -%>
+  <a href="<%= edit_admin_user_path %>"
+    class="btn btn-default <%= 'disabled' if cannot? :update, User %>">
+      <span class="fa fa-pencil"></span> 変更</a>
+<%- end -%>
+<p><%= image_tag @record.image(:avater_lg), class: 'img-responsive',
+  width: 128, height: 128, alt: @record.screen_name %></p>
+<div class="nav-tabs-custom">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab_1" data-toggle="tab">基本情報</a></li>
+  </ul>
+  <div class="tab-content">
+    <%- unless @record.confirmed_at -%>
+      <div class="callout callout-warning">
+        このユーザーは登録承認されていません。
+      </div>
+    <%- end -%>
+    <div class="tab-pane active" id="tab_1">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th class="col-xs-4"><%= User.human_attribute_name :email %></th>
+            <td><%= @record.email %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :name %></th>
+            <td><%= @record.name %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :nick_name %></th>
+            <td><%= @record.nick_name %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :roles %></th>
+            <td><%= @record.roles.map {|role| role.name}.join(', ') %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :sign_in_count %></th>
+            <td><%= @record.sign_in_count %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :current_sign_in_at %></th>
+            <td><%= l @record.current_sign_in_at if @record.current_sign_in_at %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :current_sign_in_ip %></th>
+            <td><%= @record.current_sign_in_ip %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :last_sign_in_at %></th>
+            <td><%= l @record.last_sign_in_at if @record.last_sign_in_at %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :last_sign_in_ip %></th>
+            <td><%= @record.last_sign_in_ip %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :created_at %></th>
+            <td><%= l @record.created_at %></td>
+          </tr>
+          <tr>
+            <th><%= User.human_attribute_name :updated_at %></th>
+            <td><%= l @record.updated_at %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title">このユーザーでログイン</h3>
+  </div>
+  <div class="box-body">
+    <%= form_tag login_admin_user_path(@record), class: 'form-inline' do %>
+      <input type="password" name="password" class="form-control" placeholder="あなたのパスワード">
+      <button class="btn btn-default">ログイン</button>
+    <% end %>
+  </div>
+</div>
