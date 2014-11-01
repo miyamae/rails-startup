@@ -44,6 +44,7 @@ GEM
     aws-sdk-v1 (1.57.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    bartt-ssl_requirement (1.4.2)
     bcrypt (3.1.9)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -371,6 +372,7 @@ DEPENDENCIES
   activerecord-session_store
   annotate
   aws-sdk
+  bartt-ssl_requirement
   better_errors
   binding_of_caller
   breadcrumbs_on_rails
