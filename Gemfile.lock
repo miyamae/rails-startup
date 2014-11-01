@@ -60,7 +60,7 @@ GEM
     byebug (2.7.0)
       columnize (~> 0.3)
       debugger-linecache (~> 1.2)
-    cancan (1.6.10)
+    cancancan (1.9.2)
     capistrano (3.2.1)
       i18n
       rake (>= 10.0.0)
@@ -372,7 +372,7 @@ DEPENDENCIES
   breadcrumbs_on_rails
   browser
   bullet
-  cancan
+  cancancan
   capistrano
   capistrano-bundler
   capistrano-rails
