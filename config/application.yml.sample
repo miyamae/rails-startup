@@ -36,8 +36,8 @@ production:
   #db_adapter: "postgresql"
   #db_encoding: "unicode"
   #db_template: "template0"
-  #db_database:
-  #db_username:
-  #db_password:
+  #db_database: "sampleapp_production"
+  #db_username: "sampleapp"
+  #db_password: "XXXXXXXXX"
   #db_host:
-  #db_pool: 5
+  #db_pool: "5"
