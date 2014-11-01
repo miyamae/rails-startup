@@ -27,10 +27,10 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  #config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs.
-  #config.assets.digest = true
+  config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
@@ -53,6 +53,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -60,6 +61,7 @@ Rails.application.configure do
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w(.gif .png .jpg .svg .eot .woff .ttf)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -80,8 +82,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 
   config.action_controller.action_on_unpermitted_parameters = :raise
 
