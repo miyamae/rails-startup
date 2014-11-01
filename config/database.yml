@@ -5,6 +5,7 @@ development:
   database: <%= ENV['db_database'] || 'db/development.sqlite3' %>
   username: <%= ENV['db_username'] %>
   password: <%= ENV['db_password'] %>
+  host: <%= ENV['db_host'] %>
   pool: <%= ENV['db_pool'] %>
   timeout: <%= ENV['db_timeout'] %>
 
@@ -15,6 +16,7 @@ test:
   database: <%= ENV['db_database'] || 'db/test.sqlite3' %>
   username: <%= ENV['db_username'] %>
   password: <%= ENV['db_password'] %>
+  host: <%= ENV['db_host'] %>
   pool: <%= ENV['db_pool'] %>
   timeout: <%= ENV['db_timeout'] %>
 
@@ -25,6 +27,7 @@ staging:
   database: <%= ENV['db_database'] || 'db/staging.sqlite3' %>
   username: <%= ENV['db_username'] %>
   password: <%= ENV['db_password'] %>
+  host: <%= ENV['db_host'] %>
   pool: <%= ENV['db_pool'] %>
   timeout: <%= ENV['db_timeout'] %>
 
@@ -35,5 +38,6 @@ production:
   database: <%= ENV['db_database'] || 'db/production.sqlite3' %>
   username: <%= ENV['db_username'] %>
   password: <%= ENV['db_password'] %>
+  host: <%= ENV['db_host'] %>
   pool: <%= ENV['db_pool'] %>
   timeout: <%= ENV['db_timeout'] %>
