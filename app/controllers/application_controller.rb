@@ -133,4 +133,23 @@ class ApplicationController < ActionController::Base
     add_breadcrumb '<i class="fa fa-lg">&#xf015</i><span class="sr-only">Home</span>'.html_safe, root_path
   end
 
+  # .ssl_requird :all
+  # http://www.cocoalife.net/2009/08/post_843.html
+  class << self
+    def ssl_required_with_all(*actions)
+      if actions.include?(:all)
+        class_eval do
+          def ssl_required?
+            true
+          end
+        end
+      else
+        class_eval do
+          ssl_required_without_all(*actions)
+        end
+      end
+    end
+    alias_method_chain(:ssl_required, :all)
+  end
+
 end
