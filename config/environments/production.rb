@@ -101,8 +101,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV['smtp_address'] || 'localhost',
-    port: ENV['smtp_port'] || 25
+    address: ENV['smtp_host'] || 'localhost',
+    port: ENV['smtp_port'] || 25,
+    domain: ENV['smtp_domain'],
+    user_name: ENV['smtp_username'],
+    password: ENV['smtp_password'],
+    authentication: ENV['smtp_authentication'],
+    enable_starttls_auto: ENV['smtp_enable_starttls_auto'] == 'true'
   }
 
   if ENV['system_email'].present?

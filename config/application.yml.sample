@@ -13,7 +13,7 @@ system_email: "root@localhost"
 use_ssl: "false"
 
 # メール送信SMTPサーバの設定
-smtp_address: "localhost"
+smtp_host: "localhost"
 smtp_port: "25"
 
 # アップロード画像の保存先
