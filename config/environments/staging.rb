@@ -93,9 +93,9 @@ Rails.application.configure do
 
   config.to_prepare do
     if ENV['use_ssl'] == 'true'
-      Devise::SessionsController.ssl_required
-      Users::RegistrationsController.ssl_required
-      Admin::BaseController.ssl_required
+      Devise::SessionsController.ssl_required :all
+      Users::RegistrationsController.ssl_required :all
+      Admin::BaseController.ssl_required :all
     end
   end
 
