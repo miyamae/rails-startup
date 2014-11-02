@@ -90,11 +90,11 @@ class ApplicationController < ActionController::Base
   end
 
   # ログイン直後の遷移
-  def after_sign_in_path_for(resource)
-    path = stored_location_for(resource) || session[:previous_url] || root_path
-    logger.info "after_sign_in_path: #{path}"
-    path
-  end
+  # def after_sign_in_path_for(resource)
+  #   path = stored_location_for(resource) || session[:previous_url] || root_path
+  #   logger.info "after_sign_in_path: #{path}"
+  #   path
+  # end
 
   # ログアウト直後の遷移
   # def after_sign_out_path_for(resource)
