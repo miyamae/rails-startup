@@ -26,9 +26,5 @@ module TheApp
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-    config.assets.precompile += %w(
-      admin.css admin.js
-    )
-
   end
 end
