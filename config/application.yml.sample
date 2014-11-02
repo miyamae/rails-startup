@@ -1,7 +1,7 @@
 #= Application Setting
 
 # URLのホスト名(FQDN)
-# host_name: "rails-startup.herokuapp.com"
+#host_name: "rails-startup.herokuapp.com"
 
 # メール送信元、問い合わせメール送信先
 email: "SampleApp <support@example.com>"
@@ -32,12 +32,12 @@ uploads_storage: "file"
 #google_client_id:
 #google_client_secret:
 
-production:
-  #db_adapter: "postgresql"
-  #db_encoding: "unicode"
-  #db_template: "template0"
-  #db_database: "sampleapp_production"
-  #db_username: "sampleapp"
-  #db_password: "XXXXXXXXX"
-  #db_host:
-  #db_pool: "5"
+# データベース接続先
+#db_adapter: "postgresql"
+#db_encoding: "unicode"
+#db_template: "template0"
+#db_database: "sampleapp_production"
+#db_username: "sampleapp"
+#db_password: "XXXXXXXXX"
+#db_host:
+#db_pool: "5"
