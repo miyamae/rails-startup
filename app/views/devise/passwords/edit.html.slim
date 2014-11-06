@@ -1,0 +1,11 @@
+- @title = 'パスワードの再設定'
+- add_breadcrumb 'ログイン', new_user_session_path
+p 新しいパスワードを設定してください。
+= render 'partial/errors', record: resource
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
+  = f.hidden_field :reset_password_token
+  = f.bootstrap_password :password, placeholder: '新しいパスワード'
+  = f.bootstrap_password :password_confirmation
+  .form-group
+    .col-sm-offset-3.col-sm-9
+      button.btn.btn-primary type="submit" 設定

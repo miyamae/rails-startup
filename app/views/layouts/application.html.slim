@@ -1,0 +1,122 @@
+doctype html
+html lang="ja"
+
+  head
+    title
+      - if request.path == root_path
+        = @title
+      - else
+        = "#{@title} - " if @title
+        = Const::PRODUCT
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+    /[if lt IE9]
+      script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"
+      script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"
+    = yield :head
+
+  body
+
+    - if notice
+      .sysmsg.alert.alert-info
+        button.close data-dismiss="alert" ×
+        = notice
+    - if alert
+      .sysmsg.alert.alert-danger
+        button.close data-dismiss="alert" ×
+        = alert
+
+    nav.navbar.navbar-default.navbar-top role="navigation"
+      .container
+        .navbar-header
+          button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href=root_path
+            = Const::PRODUCT
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              li.dropdown
+                a.dropdown-toggle data-toggle="dropdown" href="javascript:void(0);"
+                  img.avatar> src=current_user.image(:avater_sm) alt=current_user.screen_name title=current_user.screen_name
+                  => current_user.screen_name
+                  span.caret
+                ul.dropdown-menu
+                  li = link_to 'マイページ', user_path(current_user)
+                  li = link_to '設定', settings_profile_path
+                  li.divider
+                  li = link_to 'ログアウト', destroy_session_path(resource_name)
+                  - if current_user.has_role?(:admin)
+                    li.divider
+                    li = link_to '管理システム', admin_root_path
+            - else
+              li class=('active' if controller_name == 'registrations')
+                = link_to 'ユーザー登録', new_registration_path(resource_name)
+              li class=('active' if controller_name == 'sessions')
+                = link_to 'ログイン', new_session_path(resource_name)
+
+    = yield :cover
+
+    .container#content
+      .row.row-offcanvas.row-offcanvas-left
+        - sidebar = yield :sidebar
+        - if !sidebar.empty?
+          .col-sm-3.sidebar-offcanvas#sidebar role="navigation"
+            .sidebar-nav
+              = sidebar
+          .col-sm-9
+            .container-right.content
+              .visible-xs
+                button.btn.btn-default.btn-sm type="button" data-toggle="offcanvas"
+                  span.fa.fa-angle-left MENU
+              - if @title && request.path != root_path
+                .page-header
+                  h1
+                    = @title
+                    - if @subtitle
+                      small = @subtitle
+              = yield
+        - else
+          .container.content
+            - if @title && request.path != root_path
+              .page-header
+                h1
+                  = @title
+                  - if @subtitle
+                    small = @subtitle
+            = yield
+
+    .container
+      - if breadcrumbs.present?
+        .footer-breadcrumb
+          - if request.path != root_path
+            ol.breadcrumb
+              - add_breadcrumb @title if breadcrumbs.last.name != @title
+              = render_breadcrumbs builder: CustomBreadcrumbsBuilder
+
+      /[if lt IE9]
+        .alert.alert-warning
+          | お使いのブラウザ（旧バージョンのInternet Explorer）は、当サイトの一部機能が正常に動作しない場合があります。
+      noscript
+        .alert.alert-danger
+          | ご利用の環境ではJavaScriptが使用できないため、当サイトの機能が正しく動作しません。
+
+    .footer
+      .container
+        .row
+          .col-sm-8
+            = Const::COPYRIGHT
+          .col-sm-4
+            ul
+              li
+                a href="/privacy" プライバシーポリシー
+              li
+                a href= contact_index_path お問い合わせ
+
+    = javascript_include_tag 'application'
+    = yield :foot

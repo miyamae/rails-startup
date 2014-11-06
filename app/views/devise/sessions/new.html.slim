@@ -1,0 +1,27 @@
+- @title = 'ログイン'
+.row
+  .col-sm-7
+    h2 ログイン
+    .panel.panel-default
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+        .panel-body
+          = f.bootstrap_text :email
+          = f.bootstrap_password :password
+          - if devise_mapping.rememberable?
+            .row
+              .col-sm-offset-3.col-sm-9
+                .checkbox
+                  label
+                    = f.check_box :remember_me
+                    | 次回から自動的にログイン
+        .panel-footer
+          .row
+            .col-sm-offset-3.col-sm-9
+              button.btn.btn-primary.btn-solid type="submit" ログイン
+    p
+      a href=new_password_path(resource_name) パスワードをお忘れの方 ≫
+  .col-sm-5
+    = render 'devise/omniauth'
+    h2 ユーザー登録
+    p
+      a href=new_registration_path(resource_name) ユーザー登録 ≫

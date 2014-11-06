@@ -1,0 +1,14 @@
+- content_for :sidebar
+  .panel.panel-default
+    .panel-heading
+      | 設定
+    .panel-body
+      = image_tag current_user.image(:avater_lg), class: 'img-responsive', alt: current_user.screen_name
+    ul.list-group
+      a href=settings_profile_path class=(['list-group-item', ('active' if 'active' if "#{controller_name}##{action_name}" == 'settings#profile')].compact.join(' '))
+        | プロフィール設定
+      - if ENV['facebook_app_id'] || ENV['twitter_api_key'] || ENV['google_client_id']
+        a href=settings_oauth_path class=(['list-group-item', ('active' if "#{controller_name}##{action_name}" == 'settings#oauth')].compact.join(' '))
+          | 外部サイト連携
+      a href=edit_registration_path(resource_name) class=(['list-group-item', ('active' if controller_name == 'registrations')].compact.join(' '))
+        | アカウント設定

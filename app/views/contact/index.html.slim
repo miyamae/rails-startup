@@ -1,0 +1,9 @@
+p 必要事項を入力の上、送信してください。
+= render 'partial/errors', record: @contact
+= form_for(@contact, url: {}, html: {class: 'form-horizontal', id: 'form'}) do |f|
+  = f.bootstrap_text :name, placeholder: '入力必須'
+  = f.bootstrap_text :company
+  = f.bootstrap_text :email, placeholder: '入力必須'
+  = f.bootstrap_text :phone
+  = f.bootstrap_textarea :body, placeholder: '入力必須', rows: 10
+  = f.bootstrap_submit '送信する'

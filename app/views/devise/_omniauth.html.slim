@@ -1,0 +1,15 @@
+- if ENV['facebook_app_id'] || ENV['twitter_api_key'] || ENV['google_client_id']
+  h2 または、SNSアカウントでログイン
+  p  登録不要で今すぐログイン
+  - if ENV['facebook_app_id']
+    a.btn.btn-default.btn-block href=redirect_oauth_path(:facebook)
+      .fa.fa-lg.fa-facebook-square>
+      | Facebookでログイン
+  - if ENV['twitter_api_key']
+    a.btn.btn-default.btn-block href=redirect_oauth_path(:twitter)
+      .fa.fa-lg.fa-twitter-square>
+      | Twitterでログイン
+  - if ENV['google_client_id']
+    a.btn.btn-default.btn-block href=redirect_oauth_path(:google_oauth2)
+      .fa.fa-lg.fa-google-plus-square>
+      | Googleでログイン

@@ -1,0 +1,30 @@
+= render 'settings/sidebar'
+
+p 外部サービスアカウントとの関連付けを設定すると、ログインが簡単になります。
+
+- if ENV['facebook_app_id'].present?
+  h2 Facebookアカウント
+  - if current_user.facebook_uid.present?
+    p すでにFacebookアカウントと関連付けられています。
+    a.btn.btn-default.btn-danger href=settings_oauth_remove_path(:facebook) 解除する
+  - else
+    p Facebookアカウントと関連付けられていません。
+    a.btn.btn-default.btn-primary href=redirect_oauth_path(:facebook) 関連付ける
+
+- if ENV['twitter_api_key'].present?
+  h2 Twitterアカウント
+  - if current_user.twitter_uid.present?
+    p すでにTwitterアカウントと関連付けられています。
+    a.btn.btn-default.btn-danger href=settings_oauth_remove_path(:twitter) 解除する
+  - else
+    p Twitterアカウントと関連付けられていません。
+    a.btn.btn-default.btn-primary href=redirect_oauth_path(:twitter) 関連付ける
+
+- if ENV['google_client_id'].present?
+  h2 Googleアカウント
+  - if current_user.google_uid.present?
+    p すでにGoogleアカウントと関連付けられています。
+    a.btn.btn-default.btn-danger href=settings_oauth_remove_path(:google) 解除する
+  - else
+    p Googleアカウントと関連付けられていません。
+    a.btn.btn-default.btn-primary href=redirect_oauth_path(:google_oauth2) 関連付ける
