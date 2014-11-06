@@ -79,8 +79,8 @@ class User < ActiveRecord::Base
   include PaperclipUuidFilename
   uuid_attached_file :image
 
-  validates :name, length: { maximum: 20 }
-  validates :nick_name, length: { maximum: 20 }
+  validates :name, length: { maximum: 30 }
+  validates :nick_name, length: { maximum: 30 }
   validates :bio, length: { maximum: 1000 }
   validates :note, length: { maximum: 1000 }
 
