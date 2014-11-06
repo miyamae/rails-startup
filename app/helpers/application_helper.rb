@@ -19,21 +19,21 @@ module ApplicationHelper
 
   def input_field(label, controls, help=nil)
     if controls.is_a?(Array)
-      inp_html = %{<ul class="inputs-list">\n}
+      inp_html = %{<ul class="inputs-list">}
       controls.each do |ctl|
-        inp_html += %{<li><label>#{ctl}</label></li>\n}
+        inp_html += %{<li><label>#{ctl}</label></li>}
       end
-      inp_html += %{</ul>\n}
+      inp_html += %{</ul>}
     else
       inp_html = controls
     end
     if help
-      inp_html += raw %{<span class="help-block">#{help}</span>\n}
+      inp_html += raw %{<span class="help-block">#{help}</span>}
     end
     label_html = label =~ /<label/ ? label : "<label>#{label}</label>"
     label_html.gsub!(/(<label)/, '\1 class="control-label"') unless label_html =~ /control\-label/
-    html = %{<div class="control-group">\n#{label_html}\n} +
-      %{<div class="controls">\n#{inp_html}\n</div>\n</div>\n}
+    html = %{<div class="control-group">#{label_html}} +
+      %{<div class="controls">#{inp_html}</div></div>}
     raw html
   end
 
@@ -50,22 +50,22 @@ class ActionView::Helpers::FormBuilder
   # Bootstrap Form用の入力フィールド
   def bootstrap_field(label, controls, help=nil)
     if controls.is_a?(Array)
-      inp_html = %{<ul class="inputs-list">\n}
+      inp_html = %{<ul class="inputs-list">}
       controls.each do |ctl|
-        inp_html += %{<li><label>#{ctl}</label></li>\n}
+        inp_html += %{<li><label>#{ctl}</label></li>}
       end
-      inp_html += %{</ul>\n}
+      inp_html += %{</ul>}
     else
       inp_html = controls
     end
     if help
-      inp_html += %{<span class="help-block">#{help}</span>\n}.html_safe
+      inp_html += %{<span class="help-block">#{help}</span>}.html_safe
     end
     label_str = label.is_a?(String) ? label : label(label)
     label_html = label_str =~ /<label/ ? label_str : "<label>#{label}</label>"
     label_html.gsub!(/(<label)/, '\1 class="col-sm-3 control-label"') unless label_html =~ /control\-label/
-    html = %{<div class="form-group">\n#{label_html}\n} +
-      %{<div class="col-sm-9">\n#{inp_html}\n</div>\n</div>\n}
+    html = %{<div class="form-group">#{label_html}} +
+      %{<div class="col-sm-9">#{inp_html}</div></div>}
     html.html_safe
   end
 
@@ -99,7 +99,7 @@ class ActionView::Helpers::FormBuilder
         if v.size <= 1
           tag = hidden_filed_dt(params, kk)
           tag.gsub!(/value=\".*?\"/, "value=\"\"")
-          html += tag + "\n"
+          html += tag
         else
           v.each do |vv|
             tag = hidden_filed_dt(params, kk)
@@ -107,11 +107,11 @@ class ActionView::Helpers::FormBuilder
               tag.gsub!(/(name=\".*?)\"/, '\1[]"')
               tag.gsub!(/value=\".*?\"/, "value=\"#{ERB::Util.h vv}\"")
             end
-            html += tag + "\n"
+            html += tag
           end
         end
       else
-        html += hidden_filed_dt(params, kk) + "\n"
+        html += hidden_filed_dt(params, kk)
       end
     end
     html.html_safe
