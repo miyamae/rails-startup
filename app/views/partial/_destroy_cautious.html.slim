@@ -1,0 +1,18 @@
+.box.box-danger
+  .box-header
+    h3.box-title
+      = record.class.model_name.human
+      | を削除
+  .box-body
+    p 実行すると関連するデータも含めて削除され、元に戻すことはできません。
+    = form_tag url_for(action: :destroy, id: record), method: :delete, class: 'destroy-form' do
+      input type="hidden" name="id" value="#{record}"
+      .checkbox
+        label
+          input> type="checkbox" name="confirmed" value="on"
+          | 理解しました
+      .row
+        .form-group.col-sm-4
+          input type="password" name="password" class="form-control" placeholder="パスワード"
+      button.btn.btn-danger data-confirm="#{record.class.model_name.human}「#{record}」を削除します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"
+        span.fa.fa-trash-o &nbsp;削除

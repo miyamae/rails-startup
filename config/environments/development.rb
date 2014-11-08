@@ -61,4 +61,6 @@ Rails.application.configure do
 
   BetterErrors::Middleware.allow_ip! '192.168.0.0/255.255.0.0'
 
+#  Slim::Engine.set_default_options pretty: true, sort_attrs: false
+
 end

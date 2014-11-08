@@ -1,0 +1,12 @@
+.clearfix.paginate
+  - if defined?(records.total_count)
+    - unless defined?(hide_count)
+      .pull-right
+        => number_with_delimiter records.total_count
+        | 件
+    = paginate records
+  - else
+    - unless defined?(hide_count)
+      .text-right
+        => number_with_delimiter records.length
+        | 件

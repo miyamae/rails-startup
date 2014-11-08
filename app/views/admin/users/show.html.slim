@@ -1,0 +1,61 @@
+- content_for :pagetool
+  a href=edit_admin_user_path class=['btn', 'btn-default', ('disabled' if cannot? :update, User)].compact.join(' ')
+    span.fa.fa-pencil 変更
+
+p
+  img.img-responsive src=@record.image(:avater_lg) width="128" height="128" alt=@record.screen_name
+
+.nav-tabs-custom
+
+  ul.nav.nav-tabs
+    li.active
+      a href="#tab_1" data-toggle="tab" 基本情報
+
+  .tab-content
+    - unless @record.confirmed_at
+      .callout.callout-warning
+        | このユーザーは登録承認されていません。
+    .tab-pane.active#tab_1
+      .table-responsive
+        table.table.table-bordered
+          tr
+            th.col-xs-4 = User.human_attribute_name :email
+            td = @record.email
+          tr
+            th = User.human_attribute_name :name
+            td = @record.name
+          tr
+            th = User.human_attribute_name :nick_name
+            td = @record.nick_name
+          tr
+            th = User.human_attribute_name :roles
+            td = @record.roles.map {|role| role.name}.join(', ')
+          tr
+            th = User.human_attribute_name :sign_in_count
+            td = @record.sign_in_count
+          tr
+            th = User.human_attribute_name :current_sign_in_at
+            td = l @record.current_sign_in_at if @record.current_sign_in_at
+          tr
+            th = User.human_attribute_name :current_sign_in_ip
+            td = @record.current_sign_in_ip
+          tr
+            th = User.human_attribute_name :last_sign_in_at
+            td = l @record.last_sign_in_at if @record.last_sign_in_at
+          tr
+            th = User.human_attribute_name :last_sign_in_ip
+            td = @record.last_sign_in_ip
+          tr
+            th = User.human_attribute_name :created_at
+            td = l @record.created_at
+          tr
+            th = User.human_attribute_name :updated_at
+            td = l @record.updated_at
+
+.box
+  .box-header
+    h3.box-title このユーザーでログイン
+  .box-body
+    = form_tag login_admin_user_path(@record), class: 'form-inline'
+      input.form-control> type="password" name="password" placeholder="あなたのパスワード"
+      button.btn.btn-default ログイン

@@ -1,0 +1,63 @@
+doctype html
+html lang="ja"
+
+  head
+    title
+      = [@title, Const::PRODUCT].compact.join(' - ')
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+
+    = stylesheet_link_tag 'admin'
+    = csrf_meta_tags
+    == yield :head
+
+  body.skin-blue
+
+    - if notice
+      .sysmsg.alert.alert-info.alert-dismissable
+        span.fa.fa-info
+        button.close data-dismiss="alert" ×
+        = notice
+    - if alert
+      .sysmsg.alert.alert-danger.alert-dismissable
+        span.fa.fa-warning
+        button.close data-dismiss="alert" ×
+        = alert
+
+    header.header
+      a.logo href=admin_root_path
+        = Const::PRODUCT
+      nav.navbar.navbar-static-top role="navigation"
+        a.navbar-btn.sidebar-toggle href="javascript:void(0);" data-toggle="offcanvas" role="button"
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+
+    .wrapper.row-offcanvas.row-offcanvas-left
+      aside.left-side.sidebar-offcanvas
+        section.sidebar
+          ul.sidebar-menu
+            = render 'layouts/admin_menu'
+      aside.right-side
+        - if @title.present? || breadcrumbs.present?
+          section.content-header
+            h1 = @title
+            - if breadcrumbs.present?
+              ol.breadcrumb
+                = render_breadcrumbs builder: CustomBreadcrumbsBuilder
+        section.content
+          p == yield :pagetool
+          == yield
+    footer
+      .row
+        .col-sm-12.text-center
+          => Const::PRODUCT
+          version
+          => Const::VERSION
+          = Const::COPYRIGHT
+
+    = render 'partial/legacy_browsers'
+    = javascript_include_tag 'admin'
+    = javascript_include_tag 'AdminLTE/app' if Rails.env != 'test'
+    == yield :foot

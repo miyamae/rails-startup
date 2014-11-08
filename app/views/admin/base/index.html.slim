@@ -1,0 +1,11 @@
+.row
+  .col-lg-3.col-xs-6
+    .small-box.bg-aqua
+      .inner
+        h3 = number_with_delimiter User.all.count
+        p ユーザー
+      .icon
+        span.fa.fa-user
+      a.small-box-footer href=admin_users_path
+        | 詳細&nbsp;
+        span.fa.fa-arrow-circle-right

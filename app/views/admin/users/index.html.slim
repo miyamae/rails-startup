@@ -1,0 +1,26 @@
+- content_for :pagetool
+  a href=new_admin_user_path type="button" class=['btn', 'btn-default', ('disabled' if cannot? :create, User)].compact.join(' ')
+    span.fa.fa-plus 追加
+
+- if @records.empty?
+  p データがありません。
+
+- else
+  .box
+    .box-body.no-padding
+      .table-responsive
+        table.table.table-hover.silent-link
+          thead
+            tr
+              th 名前
+              th.text-right = User.human_attribute_name(:created_at)
+          tbody
+            - @records.each do |record|
+              tr onclick="location.href='#{admin_user_path(record)}';" style="cursor:pointer;" class=('warning' unless record.confirmed_at)
+                td
+                  => image_tag record.image(:avater_sm), width: 24, height: 24, alt: record.screen_name
+                  = link_to record, admin_user_path(record)
+                td.text-right
+                  = l record.created_at
+
+  = render 'partial/paginate', records: @records
