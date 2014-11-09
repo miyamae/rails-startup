@@ -130,8 +130,7 @@ class ApplicationController < ActionController::Base
 
   # パンくずにトップを設定
   def set_root_breadcrumb
-    add_breadcrumb '<span class="fa fa-lg">&#xf015</span>' +
-      '<span class="sr-only">Top</span>'.html_safe, root_path
+    add_breadcrumb '<span class="fa fa-lg">&#xf015</span><span class="sr-only">Top</span>'.html_safe, root_path
   end
 
   # .ssl_requird :all
