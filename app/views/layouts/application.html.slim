@@ -71,7 +71,8 @@ html lang="ja"
             .container-right.content
               .visible-xs
                 button.btn.btn-default.btn-sm type="button" data-toggle="offcanvas"
-                  span.fa.fa-angle-left MENU
+                  span.fa.fa-angle-left>
+                  | MENU
               - if @title && request.path != root_path
                 .page-header
                   h1

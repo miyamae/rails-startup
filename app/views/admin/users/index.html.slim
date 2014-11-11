@@ -1,6 +1,7 @@
 - content_for :pagetool
   a href=new_admin_user_path type="button" class=['btn', 'btn-default', ('disabled' if cannot? :create, User)].compact.join(' ')
-    span.fa.fa-plus 追加
+    span.fa.fa-plus>
+    | 追加
 
 - if @records.empty?
   p データがありません。

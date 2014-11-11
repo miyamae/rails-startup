@@ -2,11 +2,9 @@
 #
 # Table name: users_roles
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer          not null
-#  role_id    :integer          not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id      :integer          not null, primary key
+#  user_id :integer          not null
+#  role_id :integer          not null
 #
 # Indexes
 #
