@@ -71,10 +71,10 @@ class User < ActiveRecord::Base
   has_attached_file :image,
     styles: { avater_lg: '256x256#' ,avater_sm: '48x48#' }
   validates_attachment_size :image, less_than: 1.megabytes,
-    message: I18n.t('activerecord.errors.messages.too_large')
+    message: I18n.t('errors.messages.too_large')
   validates_attachment_content_type :image,
     content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'],
-    message: I18n.t('activerecord.errors.messages.invalid_content_type')
+    message: I18n.t('errors.messages.invalid_content_type')
 
   include PaperclipUuidFilename
   uuid_attached_file :image

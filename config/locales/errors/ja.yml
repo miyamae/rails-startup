@@ -1,0 +1,5 @@
+ja:
+  errors:
+    messages:
+      too_large: "はサイズ %{count}以内のファイルを指定してください。"
+      invalid_content_type: "対応していないファイル形式です。"
