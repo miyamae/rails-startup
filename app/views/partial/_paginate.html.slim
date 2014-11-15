@@ -2,11 +2,9 @@
   - if defined?(records.total_count)
     - unless defined?(hide_count)
       .pull-right
-        => number_with_delimiter records.total_count
-        | 件
+        = t 'paginate.total_count', count: number_with_delimiter(records.total_count)
     = paginate records
   - else
     - unless defined?(hide_count)
       .text-right
-        => number_with_delimiter records.length
-        | 件
+        = t 'paginate.total_count', count: number_with_delimiter(records.length)

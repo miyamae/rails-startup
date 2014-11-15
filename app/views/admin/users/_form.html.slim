@@ -13,4 +13,4 @@
         = f.bootstrap_collection_checkboxes :role_ids, Role.all, :id, :name
         = f.bootstrap_password :password, autocomplete: 'off'
         = f.bootstrap_password :password_confirmation, autocomplete: 'off'
-      = f.bootstrap_submits
+      = f.bootstrap_submits t('helpers.submit.' + {'new'=>'create','create'=>'create','edit'=>'update','update'=>'update'}[action_name])

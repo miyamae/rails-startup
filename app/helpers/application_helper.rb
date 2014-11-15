@@ -230,7 +230,8 @@ class ActionView::Helpers::FormBuilder
     html += '<div class="col-sm-offset-3 col-sm-9">'
     html += submit(caption, class: 'btn btn-primary', style: 'width:100px;')
     html += ' '
-    html += submit('キャンセル', name: 'cancel', class: 'btn btn-default', style: 'width:100px;')
+    html += submit(I18n.t('helpers.submit.cancel'),
+      name: 'cancel', class: 'btn btn-default', style: 'width:100px;')
     html += '</div>'
     html += '</div>'
     html.html_safe
