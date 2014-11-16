@@ -1,10 +1,10 @@
-- @title = '本登録案内メールが届かない方'
-- add_breadcrumb 'ユーザー登録', new_user_registration_path
-p 届いたメールが迷惑メールに振り分けられてしまっていませんか？
-p もし見つからなければ、こちらから本登録案内のメールを再送信できます。
+- @title = t 'views.devise.confirmations.new.title'
+- add_breadcrumb t('views.devise.registrations.new.title'), new_user_registration_path
+= t 'views.devise.confirmations.new.guide_html'
 = render 'partial/errors', record: resource
 = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'form-horizontal' }) do |f|
   = f.bootstrap_text :email
   .form-group
     .col-sm-offset-3.col-sm-9
-      button.btn.btn-primary type="submit" 送信
+      button.btn.btn-primary type="submit"
+        = t 'views.devise.confirmations.new.submit'

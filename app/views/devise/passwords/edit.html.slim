@@ -1,11 +1,12 @@
-- @title = 'パスワードの再設定'
-- add_breadcrumb 'ログイン', new_user_session_path
-p 新しいパスワードを設定してください。
+- @title = t 'views.devise.passwords.edit.title'
+- add_breadcrumb t('views.devise.sessions.new.title'), new_user_session_path
+= t 'views.devise.passwords.edit.guide_html'
 = render 'partial/errors', record: resource
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
   = f.hidden_field :reset_password_token
-  = f.bootstrap_password :password, placeholder: '新しいパスワード'
-  = f.bootstrap_password :password_confirmation
+  = f.bootstrap_password :password, placeholder: t('views.devise.passwords.edit.new_password')
+  = f.bootstrap_password :password_confirmation, placeholder: t('helpers.input.password_confirmation')
   .form-group
     .col-sm-offset-3.col-sm-9
-      button.btn.btn-primary type="submit" 設定
+      button.btn.btn-primary type="submit"
+        = t 'views.devise.passwords.edit.submit'

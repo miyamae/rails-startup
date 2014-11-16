@@ -1,0 +1,40 @@
+ja:
+  views:
+    devise:
+
+      registrations:
+        new:
+          title: ユーザー登録
+          submit: 登録する
+          for_new: はじめてご利用の方
+          for_registered: ユーザー登録済みの方
+        edit:
+          title: アカウント設定
+
+      sessions:
+        new:
+          title: ログイン
+          submit: ログイン
+          remember_me: 次回から自動的にログイン
+
+      confirmations:
+        new:
+          title: 本登録案内メールが届かない方
+          submit: 送信
+          guide_html: <p>届いたメールが迷惑メールに振り分けられてしまっていませんか？</p><p>もし見つからなければ、こちらから本登録案内のメールを再送信できます。</p>
+
+      passwords:
+        new:
+          title: パスワードを忘れた方
+          submit: 送信
+          guide_html: <p>パスワードの再設定方法について、メールでご案内します。</p>
+        edit:
+          title: パスワードの再設定
+          new_password: 新しいパスワード
+          submit: 送信
+          guide_html: <p>新しいパスワードを設定してください。</p>
+
+      omniauth:
+        auth_title: または、SNSアカウントでログイン
+        auth_guide_html: <p>登録不要で今すぐログイン</p>
+        auth_with: "%{provider}でログイン"
