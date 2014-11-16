@@ -2,7 +2,7 @@
   .alert.alert-danger.alert-dismissable
     - if controller.is_a? Admin::BaseController
       span.fa.fa-warning
-    button.close data-dismiss="alert" ×
+    button.close.fa.fa-times data-dismiss="alert"
     h4 = t 'errors.template.body'
     ul
       - errors = record.errors.map { |atr, err| [atr, err] }

@@ -1,5 +1,5 @@
 doctype html
-html lang="ja"
+html
 
   head
     title
@@ -10,7 +10,6 @@ html lang="ja"
         = Const::PRODUCT
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-
     = stylesheet_link_tag 'application'
     = csrf_meta_tags
     == yield :head
@@ -19,11 +18,11 @@ html lang="ja"
 
     - if notice
       .sysmsg.alert.alert-info
-        button.close data-dismiss="alert" ×
+        button.close.fa.fa-times data-dismiss="alert"
         = notice
     - if alert
       .sysmsg.alert.alert-danger
-        button.close data-dismiss="alert" ×
+        button.close.fa.fa-times data-dismiss="alert"
         = alert
 
     nav.navbar.navbar-default.navbar-top role="navigation"
@@ -45,18 +44,18 @@ html lang="ja"
                   => current_user.screen_name
                   span.caret
                 ul.dropdown-menu
-                  li = link_to 'マイページ', user_path(current_user)
-                  li = link_to '設定', settings_profile_path
+                  li = link_to t('views.features.my_page'), user_path(current_user)
+                  li = link_to t('views.features.settings'), settings_profile_path
                   li.divider
-                  li = link_to 'ログアウト', destroy_session_path(resource_name)
+                  li = link_to t('views.features.sign_out'), destroy_session_path(resource_name)
                   - if current_user.has_role?(:admin)
                     li.divider
-                    li = link_to '管理システム', admin_root_path
+                    li = link_to t('views.features.admin'), admin_root_path
             - else
               li class=('active' if controller_name == 'registrations')
-                = link_to 'ユーザー登録', new_registration_path(resource_name)
+                = link_to t('views.features.sign_up'), new_registration_path(resource_name)
               li class=('active' if controller_name == 'sessions')
-                = link_to 'ログイン', new_session_path(resource_name)
+                = link_to t('views.features.sign_in'), new_session_path(resource_name)
 
     == yield :cover
 
@@ -99,11 +98,9 @@ html lang="ja"
               = render_breadcrumbs builder: CustomBreadcrumbsBuilder
 
       /[if lt IE9]
-        .alert.alert-warning
-          | お使いのブラウザ（旧バージョンのInternet Explorer）は、当サイトの一部機能が正常に動作しない場合があります。
+        .alert.alert-warning = t 'views.messages.ie_caution'
       noscript
-        .alert.alert-danger
-          | ご利用の環境ではJavaScriptが使用できないため、当サイトの機能が正しく動作しません。
+        .alert.alert-danger = t 'views.messages.noscript_caution'
 
     .footer
       .container
@@ -113,9 +110,9 @@ html lang="ja"
           .col-sm-4
             ul
               li
-                a href="/privacy" プライバシーポリシー
+                a href="/privacy" = t 'views.features.privacy'
               li
-                a href= contact_index_path お問い合わせ
+                a href=contact_index_path = t 'views.features.contact'
 
     = render 'partial/legacy_browsers'
     = javascript_include_tag 'application'

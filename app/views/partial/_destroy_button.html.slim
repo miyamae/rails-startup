@@ -1,1 +1,1 @@
-= link_to raw('<i class="fa fa-trash-o"></i> 削除'), { action: :destroy, id: record }, class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: "#{record.class.model_name.human}「#{record}」を削除します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"} %>
+= link_to raw('<span class="fa fa-trash-o"></span> ' + t('views.destroy.perform')), { action: :destroy, id: record }, class: 'btn btn-danger btn-sm', method: :delete, data: t('views.destroy.confirm_html', model: record.class.model_name.human, name: record))

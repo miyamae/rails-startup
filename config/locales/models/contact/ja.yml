@@ -1,0 +1,9 @@
+ja:
+  activemodel:
+    attributes:
+      contact:
+        name: お名前
+        company: 会社名
+        email: メールアドレス
+        phone: 電話番号
+        body: お問い合わせ内容

@@ -1,10 +1,7 @@
 ja:
-
-  activerecord: &model_i18n
-
+  activerecord:
     models:
       user: ユーザー
-
     attributes:
       user:
         id: ID
@@ -28,11 +25,3 @@ ja:
         roles: 権限
         created_at: 登録日時
         updated_at: 更新日時
-      contact:
-        name: お名前
-        company: 会社名
-        email: メールアドレス
-        phone: 電話番号
-        body: お問い合わせ内容
-
-  activemodel: *model_i18n

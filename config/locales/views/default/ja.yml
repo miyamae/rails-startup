@@ -1,0 +1,33 @@
+ja:
+
+  helpers:
+
+    submit:
+      cancel: キャンセル
+      perform: 実行する
+
+    paginate:
+      total_count: "%{count} 件"
+
+  views:
+
+    features:
+      sign_up: ユーザー登録
+      sign_in: ログイン
+      sign_out: ログアウト
+      my_page: マイページ
+      settings: 設定
+      admin: 管理システム
+      privacy: プライバシーポリシー
+      contact: お問い合わせ
+
+    messages:
+      ie_caution: お使いのブラウザ（旧バージョンのInternet Explorer）は、当サイトの一部機能が正常に動作しない場合があります。
+      noscript_caution: ご利用の環境ではJavaScriptが使用できないため、当サイトの機能が正しく動作しません。
+
+    destroy:
+      title: "%{model}を削除"
+      perform: 削除
+      agree: 理解しました
+      warning: 実行すると関連するデータも含めて削除され、元に戻すことはできません。
+      confirm_html: "%{model}「%{name}」を削除します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"

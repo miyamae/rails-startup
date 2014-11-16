@@ -2,9 +2,9 @@
   - if defined?(records.total_count)
     - unless defined?(hide_count)
       .pull-right
-        = t 'paginate.total_count', count: number_with_delimiter(records.total_count)
+        = t 'helpers.paginate.total_count', count: number_with_delimiter(records.total_count)
     = paginate records
   - else
     - unless defined?(hide_count)
       .text-right
-        = t 'paginate.total_count', count: number_with_delimiter(records.length)
+        = t 'helpers.paginate.total_count', count: number_with_delimiter(records.length)

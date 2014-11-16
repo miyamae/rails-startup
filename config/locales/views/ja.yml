@@ -1,8 +1,0 @@
-ja:
-
-  paginate:
-    total_count: "%{count} 件"
-
-  helpers:
-    submit:
-      cancel: キャンセル
