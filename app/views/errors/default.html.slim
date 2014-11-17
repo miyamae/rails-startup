@@ -3,4 +3,4 @@ h1
     = @error[0]
   div style="margin-top:-40px;margin-left:50px;"
     = @error[1]
-    small = @error[2]
+    small = t('server_errors.' + @error[0])

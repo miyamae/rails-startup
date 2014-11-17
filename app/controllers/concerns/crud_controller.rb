@@ -91,7 +91,7 @@ module CrudController
   end
 
   def new
-    @title = '追加' unless @title
+    @title = t('crud.new.title') unless @title
     @record = new_model(record_params) unless @record
     @subtitle = model_name unless @subtitle
     add_breadcrumb model_name, action: :index
@@ -101,13 +101,13 @@ module CrudController
 
   def create
     if params[:cancel]
-      flash[:alert] = "#{model_name}を追加しませんでした。"
+      flash[:alert] = t('crud.new.cancel', model: model_name)
       redirect_to action: :index
     else
       @record = new_model
       set_attributes(@record, record_params)
       if @record.errors.empty? && @record.save
-        flash[:notice] = "#{model_name}「#{@record}」を追加しました。"
+        flash[:notice] = t('crud.new.done', model: model_name, name: @record)
         redirect_to action: :show, id: @record
       else
         new
@@ -118,7 +118,7 @@ module CrudController
 
   def edit
     @record = model_find(params[:id]) unless @record
-    @title = '変更' unless @title
+    @title = t('crud.edit.title') unless @title
     @subtitle = "#{model_name} / #{@record}"
     add_breadcrumb model_name, action: :index
     add_breadcrumb @record_title || @record, action: :show, id: @record
@@ -129,12 +129,12 @@ module CrudController
     @record = model_find(params[:id])
     @record_title = @record.to_s
     if params[:cancel]
-      flash[:alert] = "#{model_name}「#{@record}」を変更しませんでした。"
+      flash[:alert] = t('crud.edit.cancel', model: model_name, name: @record)
       redirect_to action: :show, id: @record
     else
       set_attributes(@record, record_params)
       if @record.errors.empty? && @record.save
-        flash[:notice] = "#{model_name}「#{@record}」を変更しました。"
+        flash[:notice] = t('crud.edit.done', model: model_name, name: @record)
         redirect_to action: :show, id: @record
       else
         edit
@@ -148,18 +148,18 @@ module CrudController
     title = @record.to_s
     if destroy_mode == :cautious
       if ! params[:confirmed]
-        flash[:alert] = "削除に同意してください。"
+        flash[:alert] = t('crud.destroy.required_confirm')
       elsif ! (current_user && current_user.valid_password?(params[:password]))
-        flash[:alert] = "パスワードが違います。"
+        flash[:alert] = t('crud.destroy.invalid_password')
       end
     end
     if flash[:alert]
       redirect_to action: :edit, id: @record
     else
       if @record.destroy
-        flash[:notice] = "#{model_name}「#{title}」を削除しました。"
+        flash[:notice] = t('crud.destroy.done', model: model_name, name: title)
       else
-        flash[:alert] = "#{model_name}「#{title}」を削除できませんでした。"
+        flash[:alert] = t('crud.destroy.error', model: model_name, name: title)
       end
       redirect_to action: :index
     end

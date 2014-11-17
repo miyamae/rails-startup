@@ -10,12 +10,18 @@ ja:
           for_registered: ユーザー登録済みの方
         edit:
           title: アカウント設定
+          edit_email: メールアドレス設定
+          edit_password: パスワード設定
+          email_not_set: メールアドレスが設定されていません。設定してください。
+          password_not_set: パスワードが設定されていません。設定してください。
 
       sessions:
         new:
           title: ログイン
           submit: ログイン
           remember_me: 次回から自動的にログイン
+        destroy:
+          title: ログアウト
 
       confirmations:
         new:
@@ -38,3 +44,8 @@ ja:
         auth_title: または、SNSアカウントでログイン
         auth_guide_html: <p>登録不要で今すぐログイン</p>
         auth_with: "%{provider}でログイン"
+
+      destroy:
+        title: アカウント削除（脱退）
+        guide_html: <p>この操作を実行するとログインできなくなります。関連するデータも含めて削除され、元に戻すことはできません。</p>
+        confirm_html: アカウントを削除（脱退）します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。

@@ -215,7 +215,7 @@ class ActionView::Helpers::FormBuilder
   end
 
   # 保存/キャンセルボタン
-  def bootstrap_submit(caption='保存')
+  def bootstrap_submit(caption=I18n.t('helpers.submit.submit'))
     html = '<hr>'
     html += '<div class="form-group">'
     html += '<div class="col-sm-offset-3 col-sm-9">'
@@ -224,7 +224,7 @@ class ActionView::Helpers::FormBuilder
     html += '</div>'
     html.html_safe
   end
-  def bootstrap_submits(caption='保存')
+  def bootstrap_submits(caption=I18n.t('helpers.submit.submit'))
     html = '<hr>'
     html += '<div class="form-group">'
     html += '<div class="col-sm-offset-3 col-sm-9">'

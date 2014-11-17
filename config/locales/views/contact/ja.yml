@@ -1,0 +1,9 @@
+ja:
+  views:
+    contact:
+      title: お問い合わせ
+      guide_html: <p>必要事項を入力の上、送信してください。</p>
+      done_title: お問い合わせを受け付けました
+      done_html: <p>お問い合わせを受け付けました。</p><p>回答にはお時間を頂く場合がございます。</p>
+      submit: 送信する
+      required: 入力必須

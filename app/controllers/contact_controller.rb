@@ -2,7 +2,7 @@
 
 class ContactController < ApplicationController
 
-  add_breadcrumb 'お問い合わせ', :contact_index_path
+  add_breadcrumb I18n.t('views.contact.title'), :contact_index_path
 
   def index
     @title ||= breadcrumbs.last.name
@@ -13,7 +13,7 @@ class ContactController < ApplicationController
   def create
     @contact = Contact.new(params[:contact])
     if @contact.valid?
-      @title = 'お問い合わせを受け付けました'
+      @title = I18n.t('views.contact.done_title')
       @contact.sendmail
     else
       index

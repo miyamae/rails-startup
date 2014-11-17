@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       logger.error exception.backtrace.join("\n")
     end
     breadcrumbs.clear
-    @error = [404, 'Not Found', '見つかりません。']
+    @error = [404, 'Not Found']
     render status: 404, template: 'errors/default.html'
   end
 
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
       logger.error exception.backtrace.join("\n")
     end
     breadcrumbs.clear
-    @error = [403, 'Forbidden', 'アクセスする権限がありません。']
+    @error = [403, 'Forbidden']
     render status: 403, template: 'errors/default.html'
   end
 
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
       ExceptionNotifier.notify_exception(exception, env: request.env)
     end
     breadcrumbs.clear
-    @error = [500, 'Internal Server Error', '内部的なエラーが発生しました。']
+    @error = [500, 'Internal Server Error']
     render status: 500, template: 'errors/default.html'
   end
 

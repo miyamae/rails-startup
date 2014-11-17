@@ -1,0 +1,18 @@
+ja:
+  views:
+    settings:
+      title: 設定
+      profile:
+        title: プロフィール設定
+        updated: プロフィールを変更しました。
+      oauth:
+        title: 外部サイト連携
+        guide_html: <p>外部サービスアカウントとの関連付けを設定すると、ログインが簡単になります。</p>
+        provider_title: "%{provider}アカウント"
+        already_connected: "すでに%{provider}アカウントと関連付けられています。"
+        not_connected: "%{provider}アカウントと関連付けられていません。"
+        connect: 関連付ける
+        disconnect: 解除する
+        disconnected: "%{provider}アカウントとの関連付けを解除しました。"
+        required_email_password: メールアドレスとパスワードが設定されていないため、外部サイト連携を解除できません。
+

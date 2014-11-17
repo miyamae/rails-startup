@@ -1,37 +1,35 @@
-- @title = 'アカウント設定'
-- add_breadcrumb 'マイページ', user_path(current_user)
+- @title = t 'views.devise.registrations.edit.title'
+- add_breadcrumb t('views.users.show.my_page'), user_path(current_user)
 = render 'settings/sidebar'
 
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
   = render 'partial/errors', record: resource
 
   - if current_user.encrypted_password.present?
-    = f.bootstrap_password :current_password, placeholder: '現在設定されているパスワード'
+    = f.bootstrap_password :current_password, placeholder: t('helpers.input.current_password')
 
   .panel.panel-default.change-email
     .panel-heading
       h3.panel-title
-        | メールアドレス
-        = current_user.email.present? ? '変更' : '設定'
+        = t 'views.devise.registrations.edit.edit_email'
     .panel-body
       - if current_user.email.blank?
         .alert.alert-warning
-          | メールアドレスが設定されていません。設定してください。
+          = t 'views.devise.registrations.edit.email_not_set'
       = f.bootstrap_text :email, autocomplete: 'off'
       - if resource.unconfirmed_email.present?
-        = f.bootstrap_static ' ', "#{resource.unconfirmed_email} (確認中)", help: '手続き案内メールを送信しました。ご確認ください。'
+        = f.bootstrap_static ' ', resource.unconfirmed_email, help: t('devise.registrations.update_needs_confirmation')
 
   .panel.panel-default.change-password
     .panel-heading
       h3.panel-title
-        | パスワード
-        = current_user.encrypted_password.present? ? '変更' : '設定'
+        = t 'views.devise.registrations.edit.edit_password'
     .panel-body
       - if current_user.encrypted_password.blank?
         .alert.alert-warning
-          | パスワードが設定されていません。設定してください。
-      = f.bootstrap_password :password, placeholder: "#{'変更するパスワード' if current_user.encrypted_password.present?}", autocomplete: 'off'
-      = f.bootstrap_password :password_confirmation, autocomplete: 'off'
+          = t 'views.devise.registrations.edit.password_not_set'
+      = f.bootstrap_password :password, placeholder: "#{t('views.devise.passwords.edit.new_password') if current_user.encrypted_password.present?}", autocomplete: 'off'
+      = f.bootstrap_password :password_confirmation, autocomplete: 'off', placeholder: t('helpers.input.password_confirmation')
   = f.bootstrap_submit
 
 p &nbsp;
@@ -39,15 +37,18 @@ p &nbsp;
 .panel.panel-danger.user-delete
   .panel-heading
     h3.panel-title
-    | アカウント削除（脱退）
+      = t 'views.devise.destroy.title'
   .panel-body
-    p この操作を実行するとログインできなくなります。関連するデータも含めて削除され、元に戻すことはできません。
+    = t 'views.devise.destroy.guide_html'
     = form_tag registration_path(resource_name), method: :delete
       .checkbox
         label
-          input type="checkbox" name="confirmed" value="on" 理解しました
+          input type="checkbox" name="confirmed" value="on"
+          = t 'crud.destroy.agree'
       .row
         .form-group.col-sm-4
-          input type="password" name="password" class="form-control" placeholder="パスワード"
-      button.btn.btn-danger data-confirm="アカウントを削除（脱退）します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"
-        span.fa.fa-trash-o 削除
+          input type="password" name="password" class="form-control" placeholder=User.human_attribute_name(:password)
+      button.btn.btn-danger data-confirm=t('views.devise.destroy.confirm_html')
+        span.fa.fa-trash-o
+          | &nbsp;
+          = t 'crud.destroy.submit'

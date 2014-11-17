@@ -1,37 +1,41 @@
 ja:
 
   helpers:
-
     submit:
       cancel: キャンセル
       perform: 実行する
-
     paginate:
       total_count: "%{count} 件"
-
     input:
       password_confirmation: パスワードをもう一度入力
       current_password: 現在設定されているパスワード
 
+  server_errors:
+    404: 見つかりません。
+    403: アクセスする権限がありません。
+    500: 内部的なエラーが発生しました。
+
+  crud:
+    new:
+      title: 追加
+      cancel: "%{model}を追加しませんでした。"
+      done: "%{model}「%{name}」を追加しました。"
+    edit:
+      title: 変更
+      cancel: "%{model}を変更しませんでした。"
+      done: "%{model}「%{name}」を変更しました。"
+    destroy:
+      title: "%{model}を削除"
+      submit: 削除
+      agree: 理解しました
+      guide_html: "<p>実行すると関連するデータも含めて削除され、元に戻すことはできません。</p>"
+      confirm_html: "%{model}「%{name}」を削除します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"
+      required_confirm: 削除に同意してください。
+      invalid_password: パスワードが違います。
+      done: "%{model}「%{name}」を削除しました。"
+      error: "%{model}「%{name}」を削除できませんでした。"
+
   views:
-
-    features:
-      sign_up: ユーザー登録
-      sign_in: ログイン
-      sign_out: ログアウト
-      my_page: マイページ
-      settings: 設定
-      admin: 管理システム
-      privacy: プライバシーポリシー
-      contact: お問い合わせ
-
     messages:
       ie_caution: お使いのブラウザ（旧バージョンのInternet Explorer）は、当サイトの一部機能が正常に動作しない場合があります。
       noscript_caution: ご利用の環境ではJavaScriptが使用できないため、当サイトの機能が正しく動作しません。
-
-    destroy:
-      title: "%{model}を削除"
-      perform: 削除
-      agree: 理解しました
-      warning: 実行すると関連するデータも含めて削除され、元に戻すことはできません。
-      confirm_html: "%{model}「%{name}」を削除します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"

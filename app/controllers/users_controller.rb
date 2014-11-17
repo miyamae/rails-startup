@@ -2,8 +2,6 @@
 
 class UsersController < ApplicationController
 
-  # add_breadcrumb 'ユーザー', :users_path
-
   def index
     @title = breadcrumbs.last.name
   end

@@ -1,19 +1,19 @@
 .box.box-danger
   .box-header
     h3.box-title
-     = t 'views.destroy.title', model: record.class.model_name.human
+      = t 'crud.destroy.title', model: record.class.model_name.human
   .box-body
-    p = t 'views.destroy.warning'
+    = t 'crud.destroy.guide_html'
     = form_tag url_for(action: :destroy, id: record), method: :delete, class: 'destroy-form' do
       input type="hidden" name="id" value="#{record}"
       .checkbox
         label
           input> type="checkbox" name="confirmed" value="on"
-          = t 'views.destroy.agree'
+          = t 'crud.destroy.agree'
       .row
         .form-group.col-sm-4
           input type="password" name="password" class="form-control" placeholder=User.human_attribute_name(:password)
-      button.btn.btn-danger data-confirm=t('views.destroy.confirm_html', model: record.class.model_name.human, name: record)
+      button.btn.btn-danger data-confirm=t('crud.destroy.confirm_html', model: record.class.model_name.human, name: record)
         span.fa.fa-trash-o
           | &nbsp;
-          = t 'views.destroy.perform'
+          = t 'crud.destroy.submit'
