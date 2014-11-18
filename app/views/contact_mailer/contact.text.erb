@@ -1,16 +1,14 @@
-<%= Const::PRODUCT %>への問い合わせを受け付けました。
-
-【 <%= Contact.human_attribute_name :name %> 】
+== <%= Contact.human_attribute_name :name %>
 <%= @contact.name %>
 
-【 <%= Contact.human_attribute_name :company %> 】
+== <%= Contact.human_attribute_name :company %>
 <%= @contact.company %>
 
-【 <%= Contact.human_attribute_name :email %> 】
+== <%= Contact.human_attribute_name :email %>
 <%= @contact.email %>
 
-【 <%= Contact.human_attribute_name :phone %> 】
+== <%= Contact.human_attribute_name :phone %>
 <%= @contact.phone %>
 
-【<%= Contact.human_attribute_name :body %> 】
+== <%= Contact.human_attribute_name :body %>
 <%= @contact.body %>

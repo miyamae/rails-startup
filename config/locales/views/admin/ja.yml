@@ -2,3 +2,11 @@ ja:
   views:
     admin:
       title: 管理システム
+
+      users:
+        basic: 基本情報
+        unconfirmed: このユーザーは登録承認されていません。
+        sign_in_as: このユーザーでログイン
+        your_password: あなたのパスワード
+        invalid_password: パスワードが違います。
+        signed_in: "%{user} でログインしました。"

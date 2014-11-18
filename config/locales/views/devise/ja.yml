@@ -14,6 +14,8 @@ ja:
           edit_password: パスワード設定
           email_not_set: メールアドレスが設定されていません。設定してください。
           password_not_set: パスワードが設定されていません。設定してください。
+        sign_up_confirm:
+          title: 仮登録を行いました
 
       sessions:
         new:

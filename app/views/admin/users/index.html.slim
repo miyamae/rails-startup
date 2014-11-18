@@ -1,10 +1,10 @@
 - content_for :pagetool
   a href=new_admin_user_path type="button" class=['btn', 'btn-default', ('disabled' if cannot? :create, User)].compact.join(' ')
     span.fa.fa-plus>
-    | 追加
+    = t 'crud.new.title'
 
 - if @records.empty?
-  p データがありません。
+  p = t 'views.messages.not_found'
 
 - else
   .box
@@ -13,7 +13,7 @@
         table.table.table-hover.silent-link
           thead
             tr
-              th 名前
+              th = User.model_name.human
               th.text-right = User.human_attribute_name(:created_at)
           tbody
             - @records.each do |record|

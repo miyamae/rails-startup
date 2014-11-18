@@ -39,3 +39,4 @@ ja:
     messages:
       ie_caution: お使いのブラウザ（旧バージョンのInternet Explorer）は、当サイトの一部機能が正常に動作しない場合があります。
       noscript_caution: ご利用の環境ではJavaScriptが使用できないため、当サイトの機能が正しく動作しません。
+      not_found: 見つかりません。

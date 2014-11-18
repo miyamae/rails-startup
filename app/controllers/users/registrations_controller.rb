@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       # パスワード未設定の場合は現在のパスワード不要
       resource.update_without_current_password(
-          params.permit(:password, :password_confirmation, :email))
+        params.permit(:password, :password_confirmation, :email))
     end
   end
 
@@ -21,9 +21,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up_confirm
-    add_breadcrumb 'ユーザー登録', new_user_registration_path(resource)
+    add_breadcrumb t('views.devise.registrations.new.title'), new_user_registration_path(resource)
+    @title = t('views.devise.registrations.sign_up_confirm.title')
     flash.notice = nil
-    @title = '仮登録を行いました'
   end
 
   def after_update_path_for(resource)
@@ -32,9 +32,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def destroy
     if ! params[:confirmed]
-      flash[:alert] = "削除に同意してください。"
+      flash[:alert] = t('crud.destroy.required_confirm')
     elsif ! (current_user && current_user.valid_password?(params[:password]))
-      flash[:alert] = "パスワードが違います。"
+      flash[:alert] = t('crud.destroy.invalid_password')
     end
     if flash[:alert]
       redirect_to edit_registration_path(resource_name)

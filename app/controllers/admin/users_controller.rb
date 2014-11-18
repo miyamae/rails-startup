@@ -27,11 +27,10 @@ class Admin::UsersController < Admin::BaseController
   def login
     if current_user.valid_password?(params[:password])
       user = User.friendly.find(params[:id])
-      sign_in user
-      flash[:notice] = "#{user.name} でログインしました。"
+      flash[:notice] = t('views.admin.users.signed_in', user: user)
       redirect_to root_path
     else
-      flash[:alert] = 'パスワードが違います。'
+      flash[:alert] = t('views.admin.users.invalid_password')
       redirect_to admin_user_path
     end
   end

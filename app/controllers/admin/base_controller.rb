@@ -4,7 +4,7 @@ class Admin::BaseController < ApplicationController
 
   layout 'admin'
 
-  add_breadcrumb '管理システム', :admin_root_path
+  add_breadcrumb I18n.t('views.admin.title'), :admin_root_path
 
   before_filter :authenticate_user!
   before_filter :authorize_role_admin!
@@ -14,7 +14,7 @@ class Admin::BaseController < ApplicationController
   end
 
   def index
-    @title = Const::PRODUCT + ' 管理システム'
+    @title = Const::PRODUCT + ' ' + I18n.t('views.admin.title')
   end
 
 end

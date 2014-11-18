@@ -1,15 +1,6 @@
-h2 メールを確認してください
-p ご登録頂いたメールアドレス宛てに確認メールを送信しました。
-p 届いたメールに従って本登録を完了させてください。
-
-h2 数時間経過してもメールが届かない場合
-ol
-  li
-    | 確認メールが迷惑メールに振り分けられてしまっている場合があります。ご確認ください。
-  li
-    a href=new_confirmation_path(resource_name) こちらから確認メールを再送信
-    | することができます。
-  li
-    | それでも確認できない場合、登録されたメールアドレスを間違えている可能性があります。
-    a href=new_registration_path(resource_name) 再度ユーザー登録
-    | を行ってください。
+.alert.alert-warning
+  = t 'devise.registrations.signed_up_but_unconfirmed'
+p
+  a href=new_confirmation_path(resource_name)
+    => t 'views.devise.confirmations.new.title'
+    | ≫

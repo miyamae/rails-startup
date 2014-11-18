@@ -3,9 +3,9 @@
     .small-box.bg-aqua
       .inner
         h3 = number_with_delimiter User.all.count
-        p ユーザー
+        p = User.model_name.human
       .icon
         span.fa.fa-user
       a.small-box-footer href=admin_users_path
-        | 詳細&nbsp;
+        | &nbsp;
         span.fa.fa-arrow-circle-right

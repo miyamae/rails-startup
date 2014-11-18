@@ -3,7 +3,8 @@
   .nav-tabs-custom
     ul.nav.nav-tabs
       li.active
-        a href="#tab_1" data-toggle="tab" 基本情報
+        a href="#tab_1" data-toggle="tab"
+          = t 'views.admin.users.basic'
     .tab-content
       .tab-pane.active#tab_1
         = f.bootstrap_text :email
