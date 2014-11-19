@@ -1,23 +1,12 @@
-<%= @resource.screen_name %> 様
-
+<%- url = confirmation_url(@resource, confirmation_token: @token) -%>
 <%- if @resource.unconfirmed_email -%>
-いつも<%= Const::PRODUCT %>をご利用いただきありがとうございます。
-
-メールアドレス <%= @resource.unconfirmed_email %>
-への変更のリクエストを受け付けました。
-登録を完了するには、次のURLへアクセスしてください。
+<%= t 'views.devise.mailer.confirmation_instructions.change_email.body', user: @resource.screen_name, product: Const::PRODUCT, email: @resource.unconfirmed_email, url: url %>
 <%- else -%>
-<%= Const::PRODUCT %>へようこそ！
-
-ユーザー登録の申請を受け付けました。
-登録を完了するには、次のURLへアクセスしてください。
+<%= t 'views.devise.mailer.confirmation_instructions.new_user.body', user: @resource.screen_name, product: Const::PRODUCT, email: @resource.unconfirmed_email, url: url %>
 <%- end -%>
 
-<%= confirmation_url @resource, confirmation_token: @token %>
 
-
-※このメールに心当たりがない場合は、大変お手数ですが、
-何も行わずにこのメールを破棄して頂きますようにお願い致します
+<%= t 'views.devise.mailer.ignore' %>
 
 --
 <%= Const::PRODUCT %>
