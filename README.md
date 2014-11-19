@@ -15,6 +15,7 @@ Base for usual Rails applications.
 * Contact form
 * Static content pages
 * Admin interface
+* I18n
 * support Travis CI
 * support Heroku
 
