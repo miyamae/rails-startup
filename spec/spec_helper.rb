@@ -8,7 +8,6 @@ SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start 'rails'
 
 require 'rspec/rails'
-require 'rspec/autorun'
 
 # for Turnip
 Dir.glob("spec/**/*steps.rb") { |f| load f, true }
