@@ -1,11 +1,13 @@
 .row
   .col-lg-3.col-xs-6
-    .small-box.bg-aqua
-      .inner
-        h3 = number_with_delimiter User.all.count
-        p = User.model_name.human
-      .icon
-        span.fa.fa-user
-      a.small-box-footer href=admin_users_path
-        | &nbsp;
-        span.fa.fa-arrow-circle-right
+
+    a href=admin_users_path
+      .small-box.bg-aqua
+        .inner
+          h3 = number_with_delimiter User.all.count
+          p = User.model_name.human
+        .icon
+          span.fa.fa-user
+        .small-box-footer
+          | &nbsp;
+          span.fa.fa-arrow-circle-right
