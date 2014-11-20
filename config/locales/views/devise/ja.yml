@@ -46,6 +46,7 @@ ja:
         auth_title: または、SNSアカウントでログイン
         auth_guide_html: <p>登録不要で今すぐログイン</p>
         auth_with: "%{provider}でログイン"
+        redirect_oauth_html: <p>外部サービスで認証を行います。<br>そのままお待ちください。</p>
 
       destroy:
         title: アカウント削除（脱退）
