@@ -5,12 +5,12 @@ TheApp::Application.routes.draw do
 
   ## ユーザー登録・認証
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth',
+    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
   devise_scope :user do
     get 'users/sign_up_confirm' => 'users/registrations#sign_up_confirm'
-    get 'users/redirect_oauth/:provider' => 'users/omniauth#redirect_oauth', as: :redirect_oauth
+    get 'users/redirect_oauth/:provider' => 'users/omniauth_callbacks#redirect_oauth', as: :redirect_oauth
   end
   resources :users, only: [:index, :show]
 
