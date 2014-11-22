@@ -34,6 +34,8 @@ gem 'active_attr'
 gem 'schema_plus'
 gem 'mail-iso-2022-jp'
 gem 'browser'
+gem 'garage', github: 'cookpad/garage'
+gem 'weak_parameters'
 
 group :production, :staging do
   gem 'rails_12factor'
@@ -42,6 +44,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'sdoc'
+  gem 'autodoc'
   gem 'spring'
   gem 'powder'
   gem 'pry', '< 0.10.0'

@@ -31,6 +31,14 @@ TheApp::Application.routes.draw do
     end
   end
 
+  ## API
+  use_doorkeeper
+  scope module: :api do
+    scope '/v1' do
+      resources :users, only: [:index, :show, :update]
+    end
+  end
+
   ## 静的ページ
   get ':path' => 'static_pages#static'
 

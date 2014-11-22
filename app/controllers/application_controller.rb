@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::RoutingError, with: :render_404
   end
 
+  rescue_from WeakParameters::ValidationError do
+    head 400
+  end
+
   # RoutingError時に呼ばれる
   def raise_not_found!
     raise ActionController::RoutingError.new(

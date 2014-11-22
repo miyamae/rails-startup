@@ -50,9 +50,20 @@
 #= ユーザー
 
 class User < ActiveRecord::Base
+  include Garage::Representer
+  include Garage::Authorizable
   include HashKey
   extend FriendlyId
   friendly_id :key
+
+  property :id
+  property :key
+  property :name
+  property :nick_name
+  property :email
+  property :bio
+  property :created_at
+  property :updated_at
 
   default_scope { order created_at: :desc }
   scope :enabled, -> { where 'confirmed_at is not null' }
@@ -83,6 +94,15 @@ class User < ActiveRecord::Base
   validates :nick_name, length: { maximum: 30 }
   validates :bio, length: { maximum: 1000 }
   validates :note, length: { maximum: 1000 }
+
+  def self.build_permissions(perms, other, target)
+    perms.permits! :read
+  end
+
+  def build_permissions(perms, other)
+    perms.permits! :read
+    perms.permits! :write if self == other
+  end
 
   # Facebook OAuth認証情報からユーザーを取得または追加
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

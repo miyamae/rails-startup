@@ -11,7 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001000000) do
+ActiveRecord::Schema.define(version: 20141121172122) do
+
+  create_table "oauth_access_grants", force: true do |t|
+    t.integer  "resource_owner_id", null: false
+    t.integer  "application_id",    null: false
+    t.string   "token",             null: false
+    t.integer  "expires_in",        null: false
+    t.text     "redirect_uri",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "revoked_at"
+    t.string   "scopes"
+    t.index ["application_id"], :name => "fk__oauth_access_grants_application_id"
+    t.index ["resource_owner_id"], :name => "fk__oauth_access_grants_resource_owner_id"
+    t.index ["token"], :name => "index_oauth_access_grants_on_token", :unique => true
+    t.foreign_key ["application_id"], "applications", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_grants_application_id"
+    t.foreign_key ["resource_owner_id"], "resource_owners", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_grants_resource_owner_id"
+  end
+
+  create_table "oauth_access_tokens", force: true do |t|
+    t.integer  "resource_owner_id"
+    t.integer  "application_id"
+    t.string   "token",             null: false
+    t.string   "refresh_token"
+    t.integer  "expires_in"
+    t.datetime "revoked_at"
+    t.datetime "created_at",        null: false
+    t.string   "scopes"
+    t.index ["application_id"], :name => "fk__oauth_access_tokens_application_id"
+    t.index ["refresh_token"], :name => "index_oauth_access_tokens_on_refresh_token", :unique => true
+    t.index ["resource_owner_id"], :name => "fk__oauth_access_tokens_resource_owner_id"
+    t.index ["resource_owner_id"], :name => "index_oauth_access_tokens_on_resource_owner_id"
+    t.index ["token"], :name => "index_oauth_access_tokens_on_token", :unique => true
+    t.foreign_key ["application_id"], "applications", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_tokens_application_id"
+    t.foreign_key ["resource_owner_id"], "resource_owners", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_tokens_resource_owner_id"
+  end
+
+  create_table "oauth_applications", force: true do |t|
+    t.string   "name",         null: false
+    t.string   "uid",          null: false
+    t.string   "secret",       null: false
+    t.text     "redirect_uri", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["uid"], :name => "index_oauth_applications_on_uid", :unique => true
+  end
 
   create_table "roles", force: true do |t|
     t.string   "code",                    null: false

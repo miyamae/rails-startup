@@ -10,6 +10,7 @@ Base for usual Rails applications.
 * Bootstrap & AdminLTE & Font Awasome - CSS framework
 * Devise & OmniAuth & CanCanCan - authentication
 * Paperclip - File upload (local or S3)
+* Garage - REST API with OAuth
 * RSpec & Turnip & Poltergeist - E2E testing
 * Capistrano - deploying
 * Contact form
@@ -22,6 +23,14 @@ Base for usual Rails applications.
 ## Demo
 
 [http://rails-startup.herokuapp.com/](http://rails-startup.herokuapp.com/)
+
+## REST API
+
+```
+open http://localhost:3000/oauth/applications # Then create test application
+curl -u "$APPLICTION_ID:$APPLICATION_SECRET" -XPOST http://localhost:3000/oauth/token -d 'grant_type=password&username=alice@example.com&password=PASSWORD' # Then you got access token
+curl -XGET -H "Authorization: Bearer $ACCESS_TOKEN" http://localhost:3000/v1/users -d 'page=1&per_page=20'
+```
 
 ## Author
 
