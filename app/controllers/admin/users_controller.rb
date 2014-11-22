@@ -27,6 +27,7 @@ class Admin::UsersController < Admin::BaseController
   def login
     if current_user.valid_password?(params[:password])
       user = User.friendly.find(params[:id])
+      sign_in user
       flash[:notice] = t('views.admin.users.signed_in', user: user)
       redirect_to root_path
     else
