@@ -26,10 +26,37 @@ Base for usual Rails applications.
 
 ## REST API
 
+Sign in as admin user. Create test application.
+
 ```
-open http://localhost:3000/oauth/applications # Then create test application
-curl -u "$APPLICTION_ID:$APPLICATION_SECRET" -XPOST http://localhost:3000/oauth/token -d 'grant_type=password&username=alice@example.com&password=PASSWORD' # Then you got access token
-curl -XGET -H "Authorization: Bearer $ACCESS_TOKEN" http://localhost:3000/v1/users -d 'page=1&per_page=20'
+open http://localhost:3000/oauth/applications
+```
+
+Get access token.
+
+```
+curl -F grant_type=client_credentials \
+  -F client_id=$APPLICTION_ID \
+  -F client_secret=$APPLICATION_SECRET \
+  -X POST http://localhost:3000/oauth/token
+```
+
+Or password authorization.
+
+```
+curl -F grant_type=password \
+  -F username=user@example.com \
+  -F password=PASSWORD \
+  -X POST http://localhost:3000/oauth/token
+```
+
+Then you can use API.
+
+```
+curl -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -F 'page=1' \
+  -F 'per_page=20' \
+  -X GET http://localhost:3000/v1/users
 ```
 
 ## Author
