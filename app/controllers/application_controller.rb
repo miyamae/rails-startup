@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :params_toutf8, :params_strip, :default_header,
-    :set_session_uuid, :set_request, :set_root_breadcrumb
+    :set_session_uuid, :set_request, :set_root_breadcrumb, :set_locale
   after_action :store_location
 
   if Rails.env.production?
@@ -108,6 +108,11 @@ class ApplicationController < ActionController::Base
   def set_request
      Thread.current[:request] = request
      Thread.current[:current_user] = current_user
+  end
+
+  # I18n.locale をセットする
+  def set_locale
+    I18n.locale = I18n.default_locale
   end
 
   # 配列下のすべての文字列の前後空白を削除
