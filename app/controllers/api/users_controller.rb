@@ -13,7 +13,16 @@ class Api::UsersController < Api::BaseController
   end
 
   def require_resource
-    @resources = User.find(params[:id])
+    @resource = User.find(params[:id])
+  end
+
+  def update_resource
+    @resource.update_attributes!(user_params)
+  end
+
+  def user_params
+    params.permit(
+      :name, :nick_name, :email, :password, :bio)
   end
 
   def respond_with_resources_options
