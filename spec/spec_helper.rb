@@ -2,20 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 
-require 'simplecov'
-require 'simplecov-rcov'
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
-SimpleCov.start 'rails'
-
 require 'rspec/rails'
-
-# for Turnip
-Dir.glob("spec/**/*steps.rb") { |f| load f, true }
-require 'capybara/dsl'
-require 'capybara/rspec'
-require 'capybara/poltergeist'
-require 'turnip'
-require 'turnip/capybara'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -54,25 +41,3 @@ RSpec.configure do |config|
   config.order = "random"
 
 end
-
-# use poltergeist
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, js_errors: false)
-end
-Capybara.default_driver = :poltergeist
-
-# transactional fixtures for poltergeist
-class ActiveRecord::Base
-  mattr_accessor :shared_connection
-  @@shared_connection = nil
-  def self.connection
-    @@shared_connection || retrieve_connection
-  end
-end
-ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
-
-# load fixtures
-ActiveRecord::FixtureSet.reset_cache
-fixtures_folder = File.join(Rails.root, 'spec', 'fixtures')
-fixtures = Dir[File.join(fixtures_folder, '*.yml')].map {|f| File.basename(f, '.yml') }
-ActiveRecord::FixtureSet.create_fixtures(fixtures_folder, fixtures)
