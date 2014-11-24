@@ -1,9 +1,9 @@
-#= Paperclipの画像ファイル名を類推し難いUUIDに変更
+#= UUID filename for Paperclip
 #
 # class Article < ActiveRecord::Base
 #   has_attached_file :image1
 #   has_attached_file :image2
-#   include PaperclipUuidFilename      # has_attached_fileより後に書く
+#   include PaperclipUuidFilename      # after has_attached_file
 #   uuid_attached_file :image1, :image2
 
 module PaperclipUuidFilename

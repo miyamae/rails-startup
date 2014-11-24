@@ -1,4 +1,4 @@
-#= 管理システムトップページ
+#= Top page for admin
 
 class Admin::BaseController < ApplicationController
 

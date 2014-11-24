@@ -1,9 +1,9 @@
 TheApp::Application.routes.draw do
 
-  ## トップページ
+  ## Top page for application
   root to: 'base#index'
 
-  ## ユーザー登録・認証
+  ## User authentication
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
@@ -14,16 +14,16 @@ TheApp::Application.routes.draw do
   end
   resources :users, only: [:index, :show]
 
-  ## 設定
+  ## My settings
   get 'settings/profile' => 'settings#profile', as: :settings_profile
   patch 'settings/profile' => 'settings#update_profile'
   get 'settings/oauth' => 'settings#oauth', as: :settings_oauth
   get 'settings/oauth/remove/:provider' => 'settings#oauth_remove', as: :settings_oauth_remove
 
-  ## 問い合わせフォーム
+  ## Contact form
   resources :contact, only: [:index, :create]
 
-  ## 管理系
+  ## Admin
   namespace :admin do
     root to: 'base#index'
     resources :users do
@@ -39,7 +39,7 @@ TheApp::Application.routes.draw do
     end
   end
 
-  ## 静的ページ
+  ## Static pages
   get ':path' => 'static_pages#static'
 
   ## 404 Not Found

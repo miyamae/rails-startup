@@ -1,4 +1,4 @@
-#= テスト用のダミーデータを生成
+#= Generate dummy data
 
 class DummyData
 

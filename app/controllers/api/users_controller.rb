@@ -1,4 +1,4 @@
-#= ユーザーAPI
+#= REST API for User
 
 class Api::UsersController < Api::BaseController
   include Garage::RestfulActions

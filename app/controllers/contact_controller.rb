@@ -1,4 +1,4 @@
-#= 問い合わせフォーム
+#= Contact form
 
 class ContactController < ApplicationController
 

@@ -12,7 +12,7 @@
 #  index_users_roles_on_role_id_and_user_id  (role_id,user_id) UNIQUE
 #
 
-#= ユーザー：ロール
+#= Relationsips for User:Role
 
 class UsersRole < ActiveRecord::Base
 

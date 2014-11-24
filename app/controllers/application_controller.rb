@@ -1,3 +1,5 @@
+#= Base for all controllers
+
 class ApplicationController < ActionController::Base
   include SslRequirement
   include ApplicationHelper
@@ -20,13 +22,13 @@ class ApplicationController < ActionController::Base
     head 400
   end
 
-  # RoutingError時に呼ばれる
+  # Called when RoutingError
   def raise_not_found!
     raise ActionController::RoutingError.new(
       "No route matches #{params[:unmatched_route]}")
   end
 
-  # 例外発生時の404
+  # Catched Exception, response 404
   def render_404(exception=nil)
     if exception
       logger.error "Rendering 404 with exception: #{exception.message}"
@@ -37,7 +39,7 @@ class ApplicationController < ActionController::Base
     render status: 404, template: 'errors/default.html'
   end
 
-  # 例外発生時の403
+  # Catched Exception, response 403
   def render_403(exception=nil)
     if exception
       logger.error "Rendering 404 with exception: #{exception.message}"
@@ -48,7 +50,7 @@ class ApplicationController < ActionController::Base
     render status: 403, template: 'errors/default.html'
   end
 
-  # 例外発生時の500
+  # Catched Exception, response 500
   def render_500(exception=nil)
     if exception
       logger.error "Rendering 500 with exception: #{exception.message}"
@@ -60,30 +62,30 @@ class ApplicationController < ActionController::Base
     render status: 500, template: 'errors/default.html'
   end
 
-  # リクエストパラメータ値の前後の空白文字を取り除く
+  # Strip white spaces in request parameters
   def params_strip
     all_strip!(params)
   end
 
-  # リクエストパラメータ値をUTF-8に変換
+  # Convert to UTF-8 in request parameters
   def params_toutf8
     all_toutf8!(params)
   end
 
-  # HTTPレスポンスヘッダ
+  # Default HTTP response header
   def default_header
     headers['Cache-Control'] = 'no-cache'
     headers['P3P'] = "CP='UNI CUR OUR'"
   end
 
-  # セッションにユーザー識別IDをセット
+  # Set user identification to session
   def set_session_uuid
     if session[:session_uuid].blank?
       session[:session_uuid] = UUIDTools::UUID.random_create.to_s
     end
   end
 
-  # URLを記憶
+  # Store current URL
   def store_location
     if !request.xhr? && request.fullpath !~
         %r{^/(users$|users/(sign_|password|confirmation|auth|redirect_oauth))}
@@ -93,29 +95,29 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # ログイン直後の遷移
+  # Path for after sign in
   # def after_sign_in_path_for(resource)
   #   path = stored_location_for(resource) || session[:previous_url] || root_path
   #   logger.info "after_sign_in_path: #{path}"
   #   path
   # end
 
-  # ログアウト直後の遷移
+  # Path for after sign out
   # def after_sign_out_path_for(resource)
   # end
 
-  # Modelから参照できるようにrequestを保存
+  # Store request for referernce in model
   def set_request
      Thread.current[:request] = request
      Thread.current[:current_user] = current_user
   end
 
-  # I18n.locale をセットする
+  # Set I18n.locale
   def set_locale
     I18n.locale = I18n.default_locale
   end
 
-  # 配列下のすべての文字列の前後空白を削除
+  # Strip white spaces in array
   def all_strip!(var)
     if var.is_a?(Array)
       var.each { |v| all_strip!(v) }
@@ -126,7 +128,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # 配列下のすべての文字列をUTF-8に変換
+  # Convert to UTF-8 in array
   def all_toutf8!(var)
     if var.is_a?(Array)
       var.each { |v| all_toutf8!(v) }
@@ -137,7 +139,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # パンくずにトップを設定
+  # Set top page to breadcrumbs
   def set_root_breadcrumb
     add_breadcrumb '<span class="fa fa-lg">&#xf015</span><span class="sr-only">Top</span>'.html_safe, root_path
   end

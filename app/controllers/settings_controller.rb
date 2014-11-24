@@ -1,4 +1,4 @@
-#= ユーザー設定
+#= Settings for me
 
 class SettingsController < ApplicationController
 

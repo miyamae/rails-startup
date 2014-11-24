@@ -14,7 +14,7 @@
 #  index_roles_on_code  (code) UNIQUE
 #
 
-#= ロール
+#= Role for users
 
 class Role < ActiveRecord::Base
 

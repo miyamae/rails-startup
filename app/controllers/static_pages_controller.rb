@@ -1,4 +1,4 @@
-#= 静的ページ
+#= Static pages
 
 class StaticPagesController < ApplicationController
 

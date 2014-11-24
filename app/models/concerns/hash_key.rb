@@ -1,4 +1,4 @@
-#= ８桁の固有のキー(#key)を自動生成
+#= Generate unique key (Model#key)
 
 module HashKey
   extend ActiveSupport::Concern

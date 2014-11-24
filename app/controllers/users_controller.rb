@@ -1,4 +1,4 @@
-#= ユーザー
+#= Users
 
 class UsersController < ApplicationController
 

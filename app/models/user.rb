@@ -47,7 +47,7 @@
 #  index_users_on_updated_at            (updated_at)
 #
 
-#= ユーザー
+#= User accounts
 
 class User < ActiveRecord::Base
   include HashKey

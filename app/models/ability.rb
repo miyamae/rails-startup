@@ -1,3 +1,5 @@
+#= Role settings
+
 class Ability
   include CanCan::Ability
 

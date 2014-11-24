@@ -1,4 +1,4 @@
-#= トップページ
+#= Top page for application
 
 class BaseController < ApplicationController
 

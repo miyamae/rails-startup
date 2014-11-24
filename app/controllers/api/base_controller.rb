@@ -1,4 +1,4 @@
-#= APIコントローラの基底
+#= Base for REST API Controller
 
 class Api::BaseController < ApplicationController
 

@@ -1,4 +1,4 @@
-#= (管理)ユーザー
+#= (Admin) Users
 
 class Admin::UsersController < Admin::BaseController
   include CrudController

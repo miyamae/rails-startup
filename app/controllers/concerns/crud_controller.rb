@@ -1,10 +1,10 @@
-#= CRUD機能の基底
+#= Base for CRUD
 #
 # class UserController < ApplicationController
 #   include CrudController
-#   model User             # 対象のModel
+#   model User             # Target model
 #   permit :name, :email   # Strong Parameters
-#   destroy :cautious      # 削除モード
+#   destroy :cautious      # Destroy mode
 
 module CrudController
   extend ActiveSupport::Concern
