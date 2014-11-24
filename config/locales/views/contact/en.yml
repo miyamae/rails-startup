@@ -1,0 +1,9 @@
+en:
+  views:
+    contact:
+      title: Contact us
+      guide_html: <p>Please fill in required fields.</p>
+      done_title: Accepted
+      done_html: <p>Thank you for contacting us.</p><p>It will take some days to respond.</p>
+      submit: Send
+      required: Required

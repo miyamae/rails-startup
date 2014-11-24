@@ -1,0 +1,43 @@
+en:
+
+  helpers:
+    submit:
+      cancel: Cancel
+      perform: Perform
+    paginate:
+      total_count: "%{count} records"
+    input:
+      password_confirmation: Input password once again
+      current_password: Current password
+      delete: Delete
+
+  server_errors:
+    status404: Invalid URL.
+    status403: Permission denied.
+    status500: Internal error occurred.
+
+  crud:
+    new:
+      title: Create
+      cancel: "Canceled for create %{model}."
+      done: '%{model} "%{name}" created.'
+    edit:
+      title: Update
+      cancel: "Canceled for update %{model}."
+      done: '%{model} "%{name}" updated.'
+    destroy:
+      title: "Delete %{model}"
+      submit: Delete
+      agree: I agree
+      guide_html: "<p>This operation will delete this data and relation data. You cannot undo the things that you did.</p>"
+      confirm_html: "Delete %{model} '%{name}' and relation data.<br>You cannot undo the things that you did."
+      required_confirm: Please agree to deletion.
+      invalid_password: Invalid password
+      done: '%{model} "%{name}" deleted.'
+      error: 'Error occurred during deletion %{model} "%{name}".'
+
+  views:
+    messages:
+      ie_caution: "We do not support legacy IE. May not work normally."
+      noscript_caution: "Do not work normally, because your environment cannot use JavaScript."
+      not_found: Not found.

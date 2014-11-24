@@ -136,7 +136,8 @@ class ActionView::Helpers::FormBuilder
     fields = %{<img src="#{object.send(name, size)}" class="img-responsive img-thumbnail">}
     if object.send(name).file?
       fields += %{ <label style="font-weight: normal;">} +
-        %{<input type="checkbox" name="remove_images[]" value="#{name}"> 削除</label>}
+        %{<input type="checkbox" name="remove_images[]" value="#{name}"> } +
+        %{#{I18n.t('helpers.input.delete')}</label>}
     end
     fields += file_field(name)
     bootstrap_field(label(name), fields, title)

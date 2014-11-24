@@ -1,0 +1,26 @@
+en:
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        id: ID
+        email: E-mail
+        name: User name
+        key: Key
+        nick_name: Nick name
+        bio: Biography
+        password: Password
+        plain_password: Password
+        password_confirmation: Confirm password
+        current_password: Current password
+        sign_in_count: Sign in count
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in from
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in from
+        image: Image
+        role_ids: Role
+        roles: Role
+        created_at: Created at
+        updated_at: Updated at

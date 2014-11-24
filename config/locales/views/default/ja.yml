@@ -9,6 +9,7 @@ ja:
     input:
       password_confirmation: パスワードをもう一度入力
       current_password: 現在設定されているパスワード
+      delete: 削除
 
   server_errors:
     status404: 見つかりません。

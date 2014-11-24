@@ -1,0 +1,12 @@
+en:
+  views:
+    admin:
+      title: Admin
+
+      users:
+        basic: Basic
+        unconfirmed: This user not confirmed.
+        sign_in_as: Login as this user
+        your_password: Your password
+        invalid_password: Invalid password.
+        signed_in: "Signed in successfully as %{user}."

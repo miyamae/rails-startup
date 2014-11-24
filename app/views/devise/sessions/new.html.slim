@@ -21,12 +21,12 @@
                 = t 'views.devise.sessions.new.submit'
     p
       a href=new_password_path(resource_name)
-        = t 'views.devise.passwords.new.title'
+        => t 'views.devise.passwords.new.title'
         | ≫
   .col-sm-5
     = render 'devise/omniauth'
     h2 = t 'views.devise.registrations.new.title'
     p
       a href=new_registration_path(resource_name)
-        = t 'views.devise.registrations.new.title'
+        => t 'views.devise.registrations.new.title'
         | ≫

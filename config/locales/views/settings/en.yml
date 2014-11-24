@@ -1,0 +1,17 @@
+en:
+  views:
+    settings:
+      title: Settings
+      profile:
+        title: Profile
+        updated: Your profile updated.
+      oauth:
+        title: Networks
+        guide_html: <p>This is a way to simplify sign in.</p>
+        provider_title: "%{provider}"
+        already_connected: "Already connected to %{provider}."
+        not_connected: "Not connected to %{provider}."
+        connect: Connect
+        disconnect: Disconnect
+        disconnected: "Disconnected to %{provider}."
+        required_email_password: "You can not disconnect. Please set email and password."

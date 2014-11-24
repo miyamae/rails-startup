@@ -1,0 +1,65 @@
+en:
+  views:
+    devise:
+
+      registrations:
+        new:
+          title: Sign up
+          submit: Sign up
+          for_new: Create new account
+          for_registered: Already have an account?
+        edit:
+          title: Account settings
+          edit_email: Change E-mail
+          edit_password: Change password
+          email_not_set: E-mail is still not set. Please set it.
+          password_not_set: Password is still not set. Please set it.
+        sign_up_confirm:
+          title: Temporary registration completed
+
+      sessions:
+        new:
+          title: Sign in
+          submit: Sign in
+          remember_me: Keep me signed in
+        destroy:
+          title: Sign out
+
+      confirmations:
+        new:
+          title: Resend confirmation instructions
+          submit: Send
+          guide_html: "<p>Did you check your spam folders? If not found, We will send you a confirmation instructions.</p>"
+
+      passwords:
+        new:
+          title: Forgot password?
+          submit: Send
+          guide_html: "<p>We will send you a password reset link. If you enter your username, the password reset link will be sent to the email account you used during registration.</p>"
+
+        edit:
+          title: Reset password
+          new_password: New password
+          submit: Send
+          guide_html: <p>Prease input new password.</p>
+
+      omniauth:
+        auth_title: or Login with SNS
+        auth_guide_html: <p>Easy sign in!</p>
+        auth_with: "Login with %{provider}"
+        redirect_oauth_html: <p>Authentication from external web service.<br>Plase wait...</p>
+
+      destroy:
+        title: Delete account
+        guide_html: <p>This operation will delete your account and relation data. You cannot undo the things that you did.</p>
+        confirm_html: This operation will delete your account and relation data.<br>You cannot undo the things that you did.
+
+      mailer:
+        confirmation_instructions:
+          new_user:
+            body: "Dear %{user}\n\nWelcome to %{product}!\n\nYou can confirm your account through the link below.\n\n%{url}"
+          change_email:
+            body: "Dear %{user}\n\nThank you for using %{product}.\n\nWe accepted changing your E-mail.\n\nYou can confirm your account through the link below.\n\n%{url}"
+        reset_password_instructions:
+          body: "Dear %{user}\n\nThank you for using %{product}.\n\nSomeone has requested a link to change your password, and you can do this through the link below.\n\n%{url}"
+        ignore: "* If you didn't request this, please ignore this email."

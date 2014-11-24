@@ -1,0 +1,5 @@
+en:
+  views:
+    users:
+      show:
+        my_page: My page

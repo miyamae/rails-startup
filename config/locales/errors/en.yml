@@ -1,0 +1,5 @@
+en:
+  errors:
+    messages:
+      too_large: "file size must be less than %{count}"
+      invalid_content_type: "invalid content type"

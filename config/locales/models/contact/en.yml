@@ -1,0 +1,9 @@
+en:
+  activemodel:
+    attributes:
+      contact:
+        name: Your name
+        company: Organization
+        email: E-mail
+        phone: Phone
+        body: Message

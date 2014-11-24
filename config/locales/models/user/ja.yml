@@ -13,7 +13,6 @@ ja:
         password: パスワード
         plain_password: パスワード
         password_confirmation: パスワード確認
-        remember_me: ログイン状態を保存する
         current_password: 現在のパスワード
         sign_in_count: ログイン回数
         current_sign_in_at: 今回ログイン日時
