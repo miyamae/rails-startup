@@ -22,11 +22,7 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "created_at",        null: false
     t.datetime "revoked_at"
     t.string   "scopes"
-    t.index ["application_id"], :name => "fk__oauth_access_grants_application_id"
-    t.index ["resource_owner_id"], :name => "fk__oauth_access_grants_resource_owner_id"
     t.index ["token"], :name => "index_oauth_access_grants_on_token", :unique => true
-    t.foreign_key ["application_id"], "applications", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_grants_application_id"
-    t.foreign_key ["resource_owner_id"], "resource_owners", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_grants_resource_owner_id"
   end
 
   create_table "oauth_access_tokens", force: true do |t|
@@ -38,13 +34,9 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "revoked_at"
     t.datetime "created_at",        null: false
     t.string   "scopes"
-    t.index ["application_id"], :name => "fk__oauth_access_tokens_application_id"
     t.index ["refresh_token"], :name => "index_oauth_access_tokens_on_refresh_token", :unique => true
-    t.index ["resource_owner_id"], :name => "fk__oauth_access_tokens_resource_owner_id"
     t.index ["resource_owner_id"], :name => "index_oauth_access_tokens_on_resource_owner_id"
     t.index ["token"], :name => "index_oauth_access_tokens_on_token", :unique => true
-    t.foreign_key ["application_id"], "applications", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_tokens_application_id"
-    t.foreign_key ["resource_owner_id"], "resource_owners", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_oauth_access_tokens_resource_owner_id"
   end
 
   create_table "oauth_applications", force: true do |t|
