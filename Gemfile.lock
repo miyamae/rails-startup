@@ -120,6 +120,7 @@ GEM
     colorize (0.7.3)
     columnize (0.8.9)
     commonjs (0.2.7)
+    debug_exceptions_json (0.2.4)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     devise (3.4.1)
@@ -429,6 +430,7 @@ DEPENDENCIES
   capistrano-rbenv
   capybara
   coffee-rails
+  debug_exceptions_json
   devise
   exception_notification
   factory_girl_rails

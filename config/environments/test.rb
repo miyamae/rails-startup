@@ -46,4 +46,6 @@ Rails.application.configure do
     config.action_mailer.default_url_options = { host: ENV['host_name'] }
   end
 
+  config.middleware.insert_after ActionDispatch::DebugExceptions, DebugExceptionsJson
+
 end

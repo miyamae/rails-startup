@@ -35,7 +35,8 @@ open http://localhost:3000/oauth/applications
 Get access token.
 
 ```
-curl -F grant_type=client_credentials \
+curl -H "Accept: application/json" \
+  -F grant_type=client_credentials \
   -F client_id=$APPLICTION_ID \
   -F client_secret=$APPLICATION_SECRET \
   -X POST http://localhost:3000/oauth/token
@@ -44,7 +45,8 @@ curl -F grant_type=client_credentials \
 Or password authorization.
 
 ```
-curl -F grant_type=password \
+curl -H "Accept: application/json" \
+  -F grant_type=password \
   -F username=user@example.com \
   -F password=PASSWORD \
   -X POST http://localhost:3000/oauth/token
@@ -53,7 +55,8 @@ curl -F grant_type=password \
 Then you can use API.
 
 ```
-curl -H "Authorization: Bearer $ACCESS_TOKEN" \
+curl -H "Accept: application/json" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
   -F 'page=1' \
   -F 'per_page=20' \
   -X GET http://localhost:3000/v1/users

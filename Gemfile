@@ -61,6 +61,7 @@ group :development, :test do
   gem 'letter_opener'
   gem 'letter_opener-iso-2022-jp'
   gem 'annotate'
+  gem 'debug_exceptions_json'
   gem 'rspec-rails'
   gem 'turnip'
   gem 'capybara'

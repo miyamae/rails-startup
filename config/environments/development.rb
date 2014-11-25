@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -61,6 +61,6 @@ Rails.application.configure do
 
   BetterErrors::Middleware.allow_ip! '192.168.0.0/255.255.0.0'
 
-#  Slim::Engine.set_default_options pretty: true, sort_attrs: false
+  config.middleware.insert_after ActionDispatch::DebugExceptions, DebugExceptionsJson
 
 end
