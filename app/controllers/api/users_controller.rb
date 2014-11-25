@@ -9,11 +9,11 @@ class Api::UsersController < Api::BaseController
   end
 
   def require_resources
-    @resources = User.all
+    @resources = User.enabled
   end
 
   def require_resource
-    @resource = User.find(params[:id])
+    @resource = User.enabled.find(params[:id])
   end
 
   def update_resource
