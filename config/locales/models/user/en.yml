@@ -22,5 +22,5 @@ en:
         image: Image
         role_ids: Role
         roles: Role
-        created_at: Created at
-        updated_at: Updated at
+        created_at: Created
+        updated_at: Updated
