@@ -1,0 +1,2 @@
+var I18n = I18n || {};
+I18n.translations = {"en":{"js":{"confirm":{"title":"Confirmation","ok":"OK","cancel":"Cancel","wait":"Wait..."}}},"ja":{"js":{"confirm":{"title":"確認","ok":"実行","cancel":"キャンセル","wait":"お待ちください…"}}}};

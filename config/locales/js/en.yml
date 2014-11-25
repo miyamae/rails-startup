@@ -1,0 +1,7 @@
+en:
+  js:
+    confirm:
+      title: Confirmation
+      ok: OK
+      cancel: Cancel
+      wait: Wait...

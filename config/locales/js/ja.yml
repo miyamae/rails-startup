@@ -1,0 +1,7 @@
+ja:
+  js:
+    confirm:
+      title: 確認
+      ok: 実行
+      cancel: キャンセル
+      wait: お待ちください…

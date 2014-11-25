@@ -177,6 +177,8 @@ GEM
     hitimes (1.2.2)
     http_accept_language (1.0.2)
     i18n (0.6.11)
+    i18n-js (2.1.2)
+      i18n
     jbuilder (2.2.5)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -441,6 +443,7 @@ DEPENDENCIES
   garage!
   guard-pow
   hirb-unicode
+  i18n-js
   jbuilder
   jquery-rails
   kaminari
