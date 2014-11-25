@@ -1,4 +1,4 @@
-#= Deviseユーザー登録関連のカスタムController
+#= Custom for Devise::RegistrationsController
 
 class Users::RegistrationsController < Devise::RegistrationsController
 
@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user.encrypted_password.present?
       resource.update_with_password(params)
     else
-      # パスワード未設定の場合は現在のパスワード不要
+      # Password not required when no password
       resource.update_without_current_password(
         params.permit(:password, :password_confirmation, :email))
     end
