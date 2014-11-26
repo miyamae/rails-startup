@@ -3,12 +3,26 @@ require 'spec_helper'
 RSpec.describe 'users', type: :request do
   include RequestHelper
 
+  let(:user_structure) do
+    {
+      'id' => a_kind_of(Integer),
+      'key' => a_kind_of(String),
+      'name' => a_kind_of(String).or(a_nil_value),
+      'nick_name' => a_kind_of(String).or(a_nil_value),
+      'email' => a_kind_of(String).or(a_nil_value),
+      'bio' => a_kind_of(String).or(a_nil_value),
+      'created_at' => a_kind_of(String),
+      'updated_at' => a_kind_of(String)
+    }
+  end
+
   describe 'GET /v1/users' do
     let!(:users) { create_list(:user, 3) }
 
     it 'returns user resources', autodoc: true do
       get '/v1/users', params, env
       expect(response).to have_http_status(200)
+      expect(JSON(response.body)).to be_an_instance_of(Array)
     end
   end
 
@@ -18,6 +32,7 @@ RSpec.describe 'users', type: :request do
     it 'returns user resource', autodoc: true do
       get "/v1/users/#{user.id}", params, env
       expect(response).to have_http_status(200)
+      expect(JSON(response.body)).to match(user_structure)
     end
   end
 
