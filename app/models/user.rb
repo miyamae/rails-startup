@@ -62,7 +62,6 @@ class User < ActiveRecord::Base
   property :name
   property :nick_name
   property :email
-  property :password
   property :bio
   property :created_at
   property :updated_at
