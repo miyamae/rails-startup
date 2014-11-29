@@ -9,6 +9,7 @@ set :keep_releases, 5
 set :bundle_path, -> { shared_path.join('vendor/bundle') }
 set :linked_files, %w{ config/application.yml config/newrelic.yml }
 set :linked_dirs, %w{ log tmp vendor/bundle public/system }
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 namespace :deploy do
 

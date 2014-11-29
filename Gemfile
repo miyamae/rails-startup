@@ -71,6 +71,7 @@ group :development, :test do
   gem 'faker'
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
+  gem 'whenever', require: false
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
