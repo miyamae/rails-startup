@@ -4,7 +4,7 @@ set :application, 'SampleApp'
 set :repo_url, 'https://github.com/miyamae/rails-startup.git'
 set :branch, 'master'
 set :rbenv_type, :system
-set :rbenv_ruby, '2.1.3'
+set :rbenv_ruby, '2.1.5'
 set :keep_releases, 5
 set :bundle_path, -> { shared_path.join('vendor/bundle') }
 set :linked_files, %w{ config/application.yml config/newrelic.yml }
@@ -58,7 +58,7 @@ namespace :deploy do
     on roles(:app), in: :groups, limit: 3, wait: 10 do
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, :exec, :rake, 'tmp:cache:clear'
+          execute :bundle, :exec, :rake, 'tmp:cache:flush'
         end
       end
     end
