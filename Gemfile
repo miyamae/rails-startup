@@ -37,6 +37,7 @@ gem 'mail-iso-2022-jp'
 gem 'browser'
 gem 'garage', github: 'cookpad/garage'
 gem 'weak_parameters'
+gem 'whenever', require: false
 
 group :production, :staging do
   gem 'rails_12factor'
@@ -71,7 +72,6 @@ group :development, :test do
   gem 'faker'
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
-  gem 'whenever', require: false
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
