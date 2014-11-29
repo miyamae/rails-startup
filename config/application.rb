@@ -25,8 +25,7 @@ module TheApp
     config.i18n.available_locales = [:ja, :en]
     config.i18n.default_locale = :ja
 
-    config.autoload_paths += %W(#{config.root}/lib)
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths += %W(#{config.root}/lib/classes)
 
   end
 end
