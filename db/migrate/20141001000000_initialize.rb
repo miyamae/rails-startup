@@ -56,7 +56,6 @@ class Initialize < ActiveRecord::Migration
     add_index :users, :confirmation_token,   :unique => true
     add_index :users, :unlock_token,         :unique => true
 
-    # 権限
     create_table :roles do |t|
       t.string    :code, null: false, index: { unique: true }
       t.string    :name, null: false, default: ''
@@ -64,7 +63,6 @@ class Initialize < ActiveRecord::Migration
       t.timestamps
     end
 
-    # ユーザ：権限
     create_table :users_roles do |t|
       t.integer :user_id, null: false, foreign_key: true
       t.integer :role_id, null: false, foreign_key: true, index: { with: :user_id, unique: true }
@@ -73,11 +71,11 @@ class Initialize < ActiveRecord::Migration
     Role.new(
       sort: 1,
       code: 'admin',
-      name: '管理者'
+      name: 'Administrator'
     ).save(validate: false)
 
     admin = User.new(
-      nick_name: '管理者',
+      nick_name: 'Administrator',
       email: 'admin@example.com',
       password: 'adminadmin',
       confirmed_at: Time.now,
@@ -86,7 +84,6 @@ class Initialize < ActiveRecord::Migration
     admin.generate_key
     admin.save(validate: false)
 
-    # セッションストア
     create_table :sessions do |t|
       t.string    :session_id, null: false, foreign_key: false
       t.text      :data
