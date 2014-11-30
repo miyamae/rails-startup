@@ -96,18 +96,18 @@ class User < ActiveRecord::Base
   validates :bio, length: { maximum: 1000 }
   validates :note, length: { maximum: 1000 }
 
-  # API権限(:index)
+  # Permissins for API (:index)
   def self.build_permissions(perms, other, target)
     perms.permits! :read
   end
 
-  # API権限(:show, :create, :update, :destroy)
+  # Permissins for API (:show, :create, :update, :destroy)
   def build_permissions(perms, other)
     perms.permits! :read
     perms.permits! :write if self == other
   end
 
-  # Facebook OAuth認証情報からユーザーを取得または追加
+  # Find or add user with Facebook OAuth
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     if signed_in_resource
       user = signed_in_resource
@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
     user
   end
 
-  # Twitter OAuth認証情報からユーザーを取得または追加
+  # Find or add user with Twitter OAuth
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     if signed_in_resource
       user = signed_in_resource
@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
     user
   end
 
-  # Google OAuth認証情報からユーザーを取得または追加
+  # Find or add user with Google OAuth
   def self.find_for_google_oauth(auth, signed_in_resource=nil)
     if signed_in_resource
       user = signed_in_resource
@@ -166,22 +166,21 @@ class User < ActiveRecord::Base
     user
   end
 
-  # OAuth認証ユーザーはE-mail不要
+  # OAuth user does not require email
   def email_required?
     super && facebook_uid.blank? && twitter_uid.blank? && google_uid.blank?
   end
 
-  # OAuth認証ユーザーはパスワード不要
+  # OAuth user does not require password
   def password_required?
     super && facebook_uid.blank? && twitter_uid.blank? && google_uid.blank?
   end
 
-  # E-mail未設定でも再設定可能に
+  # Even if email is not set, you can reconfirm that
   def reconfirmation_required?
     self.class.reconfirmable && @reconfirmation_required # && !self.email.blank?
   end
 
-  # 現在のパスワードなしで更新
   def update_without_current_password(params, *options)
     params.delete(:current_password)
     if params[:password].blank?
@@ -192,7 +191,6 @@ class User < ActiveRecord::Base
     update_attributes(params, *options)
   end
 
-  # 表示名
   def screen_name
     if nick_name.present?
       return nick_name
@@ -205,7 +203,6 @@ class User < ActiveRecord::Base
     screen_name
   end
 
-  # 権限あり？
   def has_role?(role_code=:any)
     if role_code == :any
       ! roles.empty?
