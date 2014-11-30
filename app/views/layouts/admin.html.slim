@@ -47,7 +47,14 @@ html lang="ja"
               ol.breadcrumb
                 = render_breadcrumbs builder: CustomBreadcrumbsBuilder
         section.content
-          p == yield :pagetool
+          - pagetool_left = yield :pagetool_left
+          - pagetool_right = yield :pagetool_right
+          - if pagetool_left.present? || pagetool_right.present?
+            .row
+              .col-sm-6.pagetool-left
+                == pagetool_left
+              .col-sm-6.pagetool-right
+                == pagetool_right
           == yield
     footer
       .row

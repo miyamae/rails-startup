@@ -1,4 +1,4 @@
-- content_for :pagetool
+- content_for :pagetool_left
   a href=edit_admin_user_path class=['btn', 'btn-default', ('disabled' if cannot? :update, User)].compact.join(' ')
     span.fa.fa-pencil>
     = t 'crud.edit.title'

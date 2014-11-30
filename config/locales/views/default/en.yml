@@ -10,6 +10,8 @@ en:
       password_confirmation: Input password once again
       current_password: Current password
       delete: Delete
+    search:
+      keyword: Keyword search
 
   server_errors:
     status404: Invalid URL.

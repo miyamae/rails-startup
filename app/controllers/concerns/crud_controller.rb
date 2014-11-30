@@ -5,6 +5,7 @@
 #   model User             # Target model
 #   permit :name, :email   # Strong Parameters
 #   destroy :cautious      # Destroy mode
+#   search: :name, :bio    # Keyword search fields
 
 module CrudController
   extend ActiveSupport::Concern
@@ -13,6 +14,7 @@ module CrudController
     @@model = {}
     @@permit = {}
     @@destroy = {}
+    @@search = {}
 
     def model(value=nil)
       @@model[self] ||= value
@@ -20,6 +22,10 @@ module CrudController
 
     def permit(*values)
       @@permit[self] ||= values
+    end
+
+    def search(*values)
+      @@search[self] ||= values
     end
 
     def model_name
@@ -48,7 +54,19 @@ module CrudController
   end
 
   def search
-    model.all
+    def self.str_to_sbytes(str)
+      str.to_s.tr('ａ-ｚＡ-Ｚ０-９　！”＃＄％＆（）＊＋，－．／：；＜＝＞？＠［￥］＾＿｀｛｜｝～',
+        'a-zA-Z0-9 !"#$%&()*+,-./:;<=>?@[\]^_`{|}~')
+    end
+    if params[:q]
+      fields = self.class.search
+      query = fields.map {|f| "upper(#{f}) LIKE ?"}.join(' OR ')
+      model.where(query + ' OR ' + query,
+        *Array.new(fields.size, "%#{params[:q].upcase}%"),
+        *Array.new(fields.size, "%#{str_to_sbytes(params[:q]).upcase}%"))
+    else
+      model.all
+    end
   end
 
   def model_find(id)

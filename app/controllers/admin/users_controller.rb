@@ -4,6 +4,7 @@ class Admin::UsersController < Admin::BaseController
   include CrudController
 
   model User
+  search :name, :nick_name, :email
   destroy :cautious
   permit :key, :name, :nick_name, :email, :image,
     :password, :password_confirmation, role_ids: []
