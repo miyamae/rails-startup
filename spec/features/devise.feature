@@ -10,6 +10,7 @@
 
   シナリオ: ログイン失敗
 
+    前提 ユーザー "user1" を用意
     前提 "/users/sign_in" を表示する
     もし "user_email" に "user1@example.com" と入力する
     かつ "user_password" に "xxxxxxxxxxxx" と入力する
@@ -18,6 +19,7 @@
 
   シナリオ: ログイン成功
 
+    前提 ユーザー "user1" を用意
     前提 "/users/sign_in" を表示する
     もし "user_email" に "user1@example.com" と入力する
     かつ "user_password" に "password" と入力する
@@ -35,6 +37,7 @@
 
   シナリオ: パスワード忘れ
 
+    前提 ユーザー "user1" を用意
     前提 "/users/password/new" を表示する
     もし "Eメール" に "user1@example.com" と入力する
     かつ "form" の "送信" をクリックする

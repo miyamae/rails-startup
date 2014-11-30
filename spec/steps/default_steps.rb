@@ -2,6 +2,10 @@ step 'debug' do
   puts page.html
 end
 
+step 'break' do
+  binding.pry
+end
+
 step ':filename に保存' do |filename|
   page.save_screenshot(filename, full: true)
 end
@@ -12,13 +16,6 @@ end
 
 step ':sec 秒待つ' do |sec|
   sleep sec.to_f
-end
-
-step ':user でログインする' do |user|
-  visit '/users/sign_in'
-  fill_in 'user_email', with: "#{user}@example.com"
-  fill_in 'user_password', with: 'password'
-  click_button 'ログイン'
 end
 
 step 'URL :pattern が表示されている' do |pattern|
