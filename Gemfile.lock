@@ -213,6 +213,8 @@ GEM
     mail-iso-2022-jp (1.1.5)
       mail (>= 2.2.5)
     method_source (0.8.2)
+    migration_comments (0.3.2)
+      activerecord (>= 2.3.2)
     mime-types (2.4.3)
     mini_portile (0.6.1)
     minitest (5.4.3)
@@ -454,6 +456,7 @@ DEPENDENCIES
   letter_opener
   letter_opener-iso-2022-jp
   mail-iso-2022-jp
+  migration_comments
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-twitter

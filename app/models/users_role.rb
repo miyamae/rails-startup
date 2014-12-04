@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: users_roles
+# Table name: users_roles # ユーザー：ロール
 #
-#  id      :integer          not null, primary key
-#  user_id :integer          not null
-#  role_id :integer          not null
+#  id      :integer          not null, primary key # ユーザー：ロール
+#  user_id :integer          not null              # ユーザーID
+#  role_id :integer          not null              # ロールID
 #
 # Indexes
 #
-#  fk__users_roles_user_id                   (user_id)
 #  index_users_roles_on_role_id_and_user_id  (role_id,user_id) UNIQUE
+#  index_users_roles_on_user_id_and_role_id  (user_id,role_id) UNIQUE
 #
 
 #= Relationsips for User:Role

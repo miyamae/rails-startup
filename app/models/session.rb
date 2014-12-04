@@ -1,15 +1,16 @@
 # == Schema Information
 #
-# Table name: sessions
+# Table name: sessions # セッションデータ
 #
-#  id         :integer          not null, primary key
-#  session_id :string(255)      not null
-#  data       :text
-#  created_at :datetime
-#  updated_at :datetime
+#  id         :integer          not null, primary key # セッションデータ
+#  session_id :string(255)      not null              # セッションID
+#  data       :text                                   # データ
+#  created_at :datetime         not null              # 作成日時
+#  updated_at :datetime         not null              # 更新日時
 #
 # Indexes
 #
+#  index_sessions_on_created_at  (created_at)
 #  index_sessions_on_session_id  (session_id) UNIQUE
 #  index_sessions_on_updated_at  (updated_at)
 #

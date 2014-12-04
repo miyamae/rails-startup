@@ -1,13 +1,13 @@
 # == Schema Information
 #
-# Table name: roles
+# Table name: roles # ロールマスタ
 #
-#  id         :integer          not null, primary key
-#  code       :string(255)      not null
-#  name       :string(255)      default(""), not null
-#  sort       :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id         :integer          not null, primary key # ロールマスタ
+#  code       :string(255)      not null              # コード
+#  name       :string(255)      default(""), not null # 名称
+#  sort       :integer                                # 並び順
+#  created_at :datetime         not null              # 作成日時
+#  updated_at :datetime         not null              # 更新日時
 #
 # Indexes
 #
