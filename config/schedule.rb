@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, 'log/cron.log'
+set :output, "#{Rails.root}/log/cron.log"
 set :environment, :production
 
 # Session Expiry
@@ -27,7 +27,7 @@ every 1.day, at: '4:00 am' do
   runner 'Session.sweep(updated: 5.hour, created: 5.days)'
 end
 
-# Cleanup flushed cache
-every 1.day, at: '3:00 am' do
-  command 'if [ -e /tmp/flushed_cache.* ]; then ionice -c 2 -n 7 nice -n 19 rm -rf /tmp/flushed_cache.*; fi'
-end
+## Cleanup flushed cache
+# every 1.day, at: '3:00 am' do
+#   command 'if [ -e /tmp/flushed_cache.* ]; then ionice -c 2 -n 7 nice -n 19 rm -rf /tmp/flushed_cache.*; fi'
+# end

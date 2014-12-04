@@ -58,7 +58,8 @@ namespace :deploy do
     on roles(:app), in: :groups, limit: 3, wait: 10 do
       within current_path do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, :exec, :rake, 'tmp:cache:flush'
+          # execute :bundle, :exec, :rake, 'tmp:cache:flush'
+          execute :bundle, :exec, :rake, 'tmp:cache:clean'
         end
       end
     end
