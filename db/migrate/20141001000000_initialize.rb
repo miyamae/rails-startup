@@ -89,13 +89,11 @@ class Initialize < ActiveRecord::Migration
     admin.save(validate: false)
 
     create_table :sessions, comment: 'セッションデータ' do |t|
-      t.string    :session_id,  null: false, foreign_key: false, comment: 'セッションID'
+      t.string    :session_id,  null: false, index: { unique: true }, foreign_key: false, comment: 'セッションID'
       t.text      :data,        comment: 'データ'
       t.datetime  :created_at,  null: false, index: true, comment: '作成日時'
       t.datetime  :updated_at,  null: false, index: true, comment: '更新日時'
     end
-    add_index :sessions, :session_id, unique: true
-    add_index :sessions, :updated_at
 
   end
 
