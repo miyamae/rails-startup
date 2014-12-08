@@ -4,6 +4,7 @@
 .rvmrc
 .ruby-version
 /.bundle
+/.capistrano
 /vendor/bundle
 /log/*.log*
 /tmp/*

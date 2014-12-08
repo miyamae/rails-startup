@@ -1,5 +1,3 @@
-lock '3.2.1'
-
 set :application, 'SampleApp'
 set :repo_url, 'https://github.com/miyamae/rails-startup.git'
 set :branch, 'master'
