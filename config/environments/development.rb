@@ -38,12 +38,9 @@ Rails.application.configure do
 
   config.action_controller.action_on_unpermitted_parameters = :raise
 
-  config.action_mailer.default_url_options = { host: 'localhost' }
-  if ENV['host_name'].present?
-    Rails.application.routes.default_url_options[:host] = ENV['host_name']
-    config.action_controller.asset_host = ENV['host_name']
-    config.action_mailer.default_url_options = { host: ENV['host_name'] }
-  end
+  Rails.application.routes.default_url_options[:host] = ENV['host_name'] || 'localhost'
+  config.action_controller.asset_host = Rails.application.routes.default_url_options[:host]
+  config.action_mailer.default_url_options = { host: Rails.application.routes.default_url_options[:host] }
 
   config.action_mailer.delivery_method = :letter_opener
 
