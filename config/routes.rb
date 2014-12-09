@@ -3,6 +3,14 @@ TheApp::Application.routes.draw do
   ## Top page for application
   root to: 'base#index'
 
+  ## API
+  use_doorkeeper
+  scope module: :api do
+    scope '/v1', as: 'v1' do
+      resources :users, only: [:index, :show, :update]
+    end
+  end
+
   ## User authentication
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -28,14 +36,6 @@ TheApp::Application.routes.draw do
     root to: 'base#index'
     resources :users do
       post :login, on: :member
-    end
-  end
-
-  ## API
-  use_doorkeeper
-  scope module: :api do
-    scope '/v1' do
-      resources :users, only: [:index, :show, :update]
     end
   end
 
