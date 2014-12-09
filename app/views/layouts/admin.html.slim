@@ -67,4 +67,7 @@ html lang="ja"
     = render 'partial/legacy_browsers'
     = javascript_include_tag 'admin'
     = javascript_include_tag 'AdminLTE/app' if Rails.env != 'test'
+    javascript:
+      I18n.defaultLocale = '#{I18n.default_locale}';
+      I18n.locale = '#{I18n.locale}';
     == yield :foot
