@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   # Catched Exception, response 403
   def render_403(exception=nil)
     if exception
-      logger.error "Rendering 404 with exception: #{exception.message}"
+      logger.error "Rendering 403 with exception: #{exception.message}"
       logger.error exception.backtrace.join("\n")
     end
     breadcrumbs.clear
