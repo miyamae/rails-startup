@@ -65,6 +65,7 @@ class User < ActiveRecord::Base
   property :bio
   property :created_at
   property :updated_at
+  link(:self) { v1_user_url(self.id) }
 
   default_scope { order created_at: :desc }
   scope :enabled, -> { where 'confirmed_at is not null' }

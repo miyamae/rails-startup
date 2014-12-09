@@ -12,7 +12,8 @@ RSpec.describe 'users', type: :request do
       'email' => a_kind_of(String).or(a_nil_value),
       'bio' => a_kind_of(String).or(a_nil_value),
       'created_at' => a_kind_of(String),
-      'updated_at' => a_kind_of(String)
+      'updated_at' => a_kind_of(String),
+      '_links' => a_kind_of(Hash)
     }
   end
 
