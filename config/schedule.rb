@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "#{::Rails.root}/log/cron.log"
+set :output, 'log/cron.log'
 set :environment, :production
 
 # Session Expiry
