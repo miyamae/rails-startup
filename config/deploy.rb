@@ -57,7 +57,7 @@ namespace :deploy do
       within current_path do
         with rails_env: fetch(:rails_env) do
           # execute :bundle, :exec, :rake, 'tmp:cache:flush'
-          execute :bundle, :exec, :rake, 'tmp:cache:clean'
+          execute :bundle, :exec, :rake, 'tmp:cache:clear'
         end
       end
     end
