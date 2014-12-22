@@ -1,7 +1,7 @@
 Rails4 Application Template
 ===========================
 
-[![Build Status](https://travis-ci.org/miyamae/rails-startup.svg)](https://travis-ci.org/miyamae/rails-startup)
+[![Circle CI](https://circleci.com/gh/miyamae/rails-startup.svg?style=svg)](https://circleci.com/gh/miyamae/rails-startup)
 
 Base for usual Rails applications.
 

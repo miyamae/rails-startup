@@ -1,0 +1,10 @@
+machine:
+  timezone: Asia/Tokyo
+  ruby:
+    version: 2.1.5
+checkout:
+  post:
+    - mv config/application.yml.sample config/application.yml
+database:
+  override:
+    - bundle exec rake db:migrate --trace
