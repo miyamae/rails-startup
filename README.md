@@ -17,7 +17,7 @@ Base for usual Rails applications.
 * Static content pages
 * Admin interface
 * I18n
-* support Travis CI
+* support Travis CI or CircleCI
 * support Heroku
 
 ## Demo
