@@ -40,7 +40,6 @@ Rails.application.configure do
   config.cache_store = :memory_store
 
   Rails.application.routes.default_url_options[:host] = ENV['host_name'] || 'localhost'
-  config.action_controller.asset_host = Rails.application.routes.default_url_options[:host]
   config.action_mailer.default_url_options = { host: Rails.application.routes.default_url_options[:host] }
 
   config.middleware.insert_after ActionDispatch::DebugExceptions, DebugExceptionsJson
