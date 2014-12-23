@@ -3,7 +3,6 @@ ruby '2.1.5'
 
 gem 'rails', '4.1.8'
 
-gem 'sqlite3'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -46,6 +45,7 @@ group :production, :staging do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'sdoc'
   gem 'autodoc'
   gem 'spring'
