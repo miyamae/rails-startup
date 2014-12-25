@@ -3,7 +3,7 @@
 # Table name: sessions # セッションデータ
 #
 #  id         :integer          not null, primary key # セッションデータ
-#  session_id :string(255)      not null              # セッションID
+#  session_id :string           not null              # セッションID
 #  data       :text                                   # データ
 #  created_at :datetime         not null              # 作成日時
 #  updated_at :datetime         not null              # 更新日時

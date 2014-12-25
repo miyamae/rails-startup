@@ -3,8 +3,8 @@ class Initialize < ActiveRecord::Migration
   def change
 
     create_table :users, comment: 'ユーザーマスタ' do |t|
-      t.string :key,        null: false, index: { unique: true }, comment: '固有キー'
-      t.string :name,       null: false, default: '', index: true, comment: 'ユーザー名'
+      t.string :key,        null: false, comment: '固有キー'
+      t.string :name,       null: false, default: '', comment: 'ユーザー名'
       t.string :nick_name,  null: false, default: '', comment: 'ニックネーム'
 
       ## Database authenticatable
@@ -50,27 +50,36 @@ class Initialize < ActiveRecord::Migration
       t.text     :bio,    comment: '自己紹介'
       t.text     :note,   comment: 'メモ'
 
-      t.datetime :created_at, null: false, index: true, comment: '作成日時'
-      t.datetime :updated_at, null: false, index: true, comment: '更新日時'
+      t.datetime :created_at, null: false, comment: '作成日時'
+      t.datetime :updated_at, null: false, comment: '更新日時'
     end
-
-    add_index :users, :email
+    add_index :users, :key,                  unique: true
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     add_index :users, :unlock_token,         unique: true
+    add_index :users, :email
+    add_index :users, :name
+    add_index :users, :created_at
+    add_index :users, :updated_at
 
     create_table :roles, comment: 'ロールマスタ' do |t|
-      t.string    :code,        null: false, index: { unique: true }, comment: 'コード'
+      t.string    :code,        null: false, comment: 'コード'
       t.string    :name,        null: false, default: '', comment: '名称'
       t.integer   :sort,        comment: '並び順'
-      t.datetime  :created_at,  null: false, comment: '作成日時'
-      t.datetime  :updated_at,  null: false, comment: '更新日時'
+      t.datetime :created_at,   null: false, comment: '作成日時'
+      t.datetime :updated_at,   null: false, comment: '更新日時'
     end
+    add_index :roles, :code, unique: true
+    add_index :roles, :created_at
+    add_index :roles, :updated_at
 
     create_table :users_roles, comment: 'ユーザー：ロール' do |t|
-      t.integer :user_id, null: false, foreign_key: true, index: { with: :role_id, unique: true }, comment: 'ユーザーID'
-      t.integer :role_id, null: false, foreign_key: true, index: { with: :user_id, unique: true }, comment: 'ロールID'
+      t.integer :user_id, null: false, comment: 'ユーザーID'
+      t.integer :role_id, null: false, comment: 'ロールID'
     end
+    add_index :users_roles, [:user_id, :role_id], unique: true
+    add_foreign_key :users_roles, :user_id
+    add_foreign_key :users_roles, :role_id
 
     Role.new(
       sort: 1,
@@ -89,11 +98,14 @@ class Initialize < ActiveRecord::Migration
     admin.save(validate: false)
 
     create_table :sessions, comment: 'セッションデータ' do |t|
-      t.string    :session_id,  null: false, index: { unique: true }, foreign_key: false, comment: 'セッションID'
+      t.string    :session_id,  null: false, comment: 'セッションID'
       t.text      :data,        comment: 'データ'
-      t.datetime  :created_at,  null: false, index: true, comment: '作成日時'
-      t.datetime  :updated_at,  null: false, index: true, comment: '更新日時'
+      t.datetime  :created_at,  null: false, comment: '作成日時'
+      t.datetime  :updated_at,  null: false, comment: '更新日時'
     end
+    add_index :sessions, :session_id, unique: true
+    add_index :sessions, :created_at
+    add_index :sessions, :updated_at
 
   end
 

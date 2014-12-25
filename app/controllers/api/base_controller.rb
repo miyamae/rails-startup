@@ -1,7 +1,6 @@
 #= Base for REST API Controller
 
 class Api::BaseController <  ActionController::Base
-  include SslRequirement
   include Garage::ControllerHelper
 
   respond_to :json

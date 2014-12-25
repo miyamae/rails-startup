@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141121172122) do
 
-  create_table "oauth_access_grants", force: true, comment: "OAuthアクセスグラント" do |t|
+  create_table "oauth_access_grants", force: :cascade, comment: "OAuthアクセスグラント" do |t|
     t.integer  "resource_owner_id", null: false, comment: "リソース所有者ID"
     t.integer  "application_id",    null: false, comment: "アプリケーションID"
     t.string   "token",             null: false, comment: "アクセストークン"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "created_at",        null: false, comment: "作成日時"
     t.datetime "revoked_at",                     comment: "無効化日時"
     t.string   "scopes",                         comment: "スコープ"
-    t.index ["token"], :name => "index_oauth_access_grants_on_token", :unique => true
   end
 
-  create_table "oauth_access_tokens", force: true, comment: "OAuthアクセストークン" do |t|
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true
+
+  create_table "oauth_access_tokens", force: :cascade, comment: "OAuthアクセストークン" do |t|
     t.integer  "resource_owner_id",              comment: "リソース所有者ID"
     t.integer  "application_id",                 comment: "アプリケーションID"
     t.string   "token",             null: false, comment: "アクセストークン"
@@ -34,41 +35,47 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "revoked_at",                     comment: "無効化日時"
     t.datetime "created_at",        null: false, comment: "作成日時"
     t.string   "scopes",                         comment: "スコープ"
-    t.index ["refresh_token"], :name => "index_oauth_access_tokens_on_refresh_token", :unique => true
-    t.index ["resource_owner_id"], :name => "index_oauth_access_tokens_on_resource_owner_id"
-    t.index ["token"], :name => "index_oauth_access_tokens_on_token", :unique => true
   end
 
-  create_table "oauth_applications", force: true, comment: "OAuthアプリケーション" do |t|
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
+  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true
+
+  create_table "oauth_applications", force: :cascade, comment: "OAuthアプリケーション" do |t|
     t.string   "name",         null: false, comment: "名称"
     t.string   "uid",          null: false, comment: "アプリケーションID"
     t.string   "secret",       null: false, comment: "シークレット"
     t.text     "redirect_uri", null: false, comment: "コールバックURL"
     t.datetime "created_at",   null: false, comment: "作成日時"
     t.datetime "updated_at",   null: false, comment: "更新日時"
-    t.index ["uid"], :name => "index_oauth_applications_on_uid", :unique => true
   end
 
-  create_table "roles", force: true, comment: "ロールマスタ" do |t|
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
+
+  create_table "roles", force: :cascade, comment: "ロールマスタ" do |t|
     t.string   "code",                    null: false, comment: "コード"
     t.string   "name",       default: "", null: false, comment: "名称"
     t.integer  "sort",                                 comment: "並び順"
     t.datetime "created_at",              null: false, comment: "作成日時"
     t.datetime "updated_at",              null: false, comment: "更新日時"
-    t.index ["code"], :name => "index_roles_on_code", :unique => true
   end
 
-  create_table "sessions", force: true, comment: "セッションデータ" do |t|
+  add_index "roles", ["code"], name: "index_roles_on_code", unique: true
+  add_index "roles", ["created_at"], name: "index_roles_on_created_at"
+  add_index "roles", ["updated_at"], name: "index_roles_on_updated_at"
+
+  create_table "sessions", force: :cascade, comment: "セッションデータ" do |t|
     t.string   "session_id", null: false, comment: "セッションID"
     t.text     "data",                    comment: "データ"
     t.datetime "created_at", null: false, comment: "作成日時"
     t.datetime "updated_at", null: false, comment: "更新日時"
-    t.index ["created_at"], :name => "index_sessions_on_created_at"
-    t.index ["session_id"], :name => "index_sessions_on_session_id", :unique => true
-    t.index ["updated_at"], :name => "index_sessions_on_updated_at"
   end
 
-  create_table "users", force: true, comment: "ユーザーマスタ" do |t|
+  add_index "sessions", ["created_at"], name: "index_sessions_on_created_at"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+
+  create_table "users", force: :cascade, comment: "ユーザーマスタ" do |t|
     t.string   "key",                                 null: false, comment: "固有キー"
     t.string   "name",                   default: "", null: false, comment: "ユーザー名"
     t.string   "nick_name",              default: "", null: false, comment: "ニックネーム"
@@ -100,23 +107,22 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.text     "note",                                             comment: "メモ"
     t.datetime "created_at",                          null: false, comment: "作成日時"
     t.datetime "updated_at",                          null: false, comment: "更新日時"
-    t.index ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-    t.index ["created_at"], :name => "index_users_on_created_at"
-    t.index ["email"], :name => "index_users_on_email"
-    t.index ["key"], :name => "index_users_on_key", :unique => true
-    t.index ["name"], :name => "index_users_on_name"
-    t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-    t.index ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
-    t.index ["updated_at"], :name => "index_users_on_updated_at"
   end
 
-  create_table "users_roles", force: true, comment: "ユーザー：ロール" do |t|
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["created_at"], name: "index_users_on_created_at"
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["key"], name: "index_users_on_key", unique: true
+  add_index "users", ["name"], name: "index_users_on_name"
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  add_index "users", ["updated_at"], name: "index_users_on_updated_at"
+
+  create_table "users_roles", force: :cascade, comment: "ユーザー：ロール" do |t|
     t.integer "user_id", null: false, comment: "ユーザーID"
     t.integer "role_id", null: false, comment: "ロールID"
-    t.index ["role_id", "user_id"], :name => "index_users_roles_on_role_id_and_user_id", :unique => true
-    t.index ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id", :unique => true
-    t.foreign_key ["role_id"], "roles", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_users_roles_role_id"
-    t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_users_roles_user_id"
   end
+
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", unique: true
 
 end

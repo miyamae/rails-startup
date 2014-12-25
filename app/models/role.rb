@@ -3,15 +3,17 @@
 # Table name: roles # ロールマスタ
 #
 #  id         :integer          not null, primary key # ロールマスタ
-#  code       :string(255)      not null              # コード
-#  name       :string(255)      default(""), not null # 名称
+#  code       :string           not null              # コード
+#  name       :string           default(""), not null # 名称
 #  sort       :integer                                # 並び順
 #  created_at :datetime         not null              # 作成日時
 #  updated_at :datetime         not null              # 更新日時
 #
 # Indexes
 #
-#  index_roles_on_code  (code) UNIQUE
+#  index_roles_on_code        (code) UNIQUE
+#  index_roles_on_created_at  (created_at)
+#  index_roles_on_updated_at  (updated_at)
 #
 
 #= Role for users

@@ -8,7 +8,6 @@
 #
 # Indexes
 #
-#  index_users_roles_on_role_id_and_user_id  (role_id,user_id) UNIQUE
 #  index_users_roles_on_user_id_and_role_id  (user_id,role_id) UNIQUE
 #
 

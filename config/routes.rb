@@ -1,7 +1,7 @@
-TheApp::Application.routes.draw do
+Rails.application.routes.draw do
 
   ## Top page for application
-  root to: 'base#index'
+  root 'base#index'
 
   ## API
   use_doorkeeper
@@ -33,7 +33,7 @@ TheApp::Application.routes.draw do
 
   ## Admin
   namespace :admin do
-    root to: 'base#index'
+    root 'base#index'
     resources :users do
       post :login, on: :member
     end
