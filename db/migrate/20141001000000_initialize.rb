@@ -78,8 +78,8 @@ class Initialize < ActiveRecord::Migration
       t.integer :role_id, null: false, comment: 'ロールID'
     end
     add_index :users_roles, [:user_id, :role_id], unique: true
-    add_foreign_key :users_roles, :user_id
-    add_foreign_key :users_roles, :role_id
+    add_foreign_key :users_roles, :users
+    add_foreign_key :users_roles, :roles
 
     Role.new(
       sort: 1,
