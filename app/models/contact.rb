@@ -11,7 +11,7 @@ class Contact
   validates :body, presence: true, length: { maximum: 10000 }
 
   def sendmail
-    ContactMailer.contact(self).deliver
+    ContactMailer.contact(self).deliver_now
   end
 
 end
