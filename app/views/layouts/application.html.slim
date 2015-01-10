@@ -40,7 +40,7 @@ html
             - if user_signed_in?
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href="javascript:void(0);"
-                  img.avatar> src=current_user.image(:avater_sm) alt=current_user.screen_name title=current_user.screen_name
+                  img.avatar> src=current_user.image(:avatar_sm) alt=current_user.screen_name title=current_user.screen_name
                   => current_user.screen_name
                   span.caret
                 ul.dropdown-menu

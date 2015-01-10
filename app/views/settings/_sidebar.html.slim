@@ -3,7 +3,7 @@
     .panel-heading
       = t 'views.settings.title'
     .panel-body
-      = image_tag current_user.image(:avater_lg), class: 'img-responsive', alt: current_user.screen_name
+      = image_tag current_user.image(:avatar_lg), class: 'img-responsive', alt: current_user.screen_name
     ul.list-group
       a href=settings_profile_path class=(['list-group-item', ('active' if "#{controller_name}##{action_name}" == 'settings#profile')].compact.join(' '))
         = t 'views.settings.profile.title'

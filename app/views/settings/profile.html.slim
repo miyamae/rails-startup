@@ -3,5 +3,5 @@
 = form_for(@user, url: settings_profile_path, html: {class: 'form-horizontal'}) do |f|
   = f.bootstrap_text :nick_name
   = f.bootstrap_textarea :bio
-  = f.bootstrap_paperclip :image, :avater_sm
+  = f.bootstrap_paperclip :image, :avatar_sm
   = f.bootstrap_submit

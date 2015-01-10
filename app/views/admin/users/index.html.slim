@@ -27,7 +27,7 @@
             - @records.each do |record|
               tr onclick="location.href='#{admin_user_path(record)}';" style="cursor:pointer;" class=('warning' unless record.confirmed_at)
                 td
-                  => image_tag record.image(:avater_sm), width: 24, height: 24, alt: record.screen_name
+                  => image_tag record.image(:avatar_sm), width: 24, height: 24, alt: record.screen_name
                   = link_to record, admin_user_path(record)
                 td.text-right
                   = l record.created_at

@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
     :omniauthable, omniauth_providers: [:facebook, :twitter, :google_oauth2]
 
   has_attached_file :image,
-    styles: { avater_lg: '256x256#' ,avater_sm: '48x48#' }
+    styles: { avatar_lg: '256x256#' ,avatar_sm: '48x48#' }
   validates_attachment_size :image, less_than: 1.megabytes,
     message: I18n.t('errors.messages.too_large')
   validates_attachment_content_type :image,
