@@ -107,12 +107,17 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.text     "note",                                             comment: "メモ"
     t.datetime "created_at",                          null: false, comment: "作成日時"
     t.datetime "updated_at",                          null: false, comment: "更新日時"
+    t.datetime "deleted_at",                                       comment: "削除日時"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["created_at"], name: "index_users_on_created_at"
+  add_index "users", ["deleted_at", "facebook_uid"], name: "index_users_on_deleted_at_and_facebook_uid", unique: true
+  add_index "users", ["deleted_at", "google_uid"], name: "index_users_on_deleted_at_and_google_uid", unique: true
+  add_index "users", ["deleted_at", "key"], name: "index_users_on_deleted_at_and_key", unique: true
+  add_index "users", ["deleted_at", "twitter_uid"], name: "index_users_on_deleted_at_and_twitter_uid", unique: true
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at"
   add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["key"], name: "index_users_on_key", unique: true
   add_index "users", ["name"], name: "index_users_on_name"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
