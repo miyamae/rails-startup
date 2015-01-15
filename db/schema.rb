@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141121172122) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "oauth_access_grants", force: :cascade, comment: "OAuthアクセスグラント" do |t|
     t.integer  "resource_owner_id", null: false, comment: "リソース所有者ID"
     t.integer  "application_id",    null: false, comment: "アプリケーションID"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.string   "scopes",                         comment: "スコープ"
   end
 
-  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
   create_table "oauth_access_tokens", force: :cascade, comment: "OAuthアクセストークン" do |t|
     t.integer  "resource_owner_id",              comment: "リソース所有者ID"
@@ -37,9 +40,9 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.string   "scopes",                         comment: "スコープ"
   end
 
-  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
-  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
-  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: :cascade, comment: "OAuthアプリケーション" do |t|
     t.string   "name",         null: false, comment: "名称"
@@ -50,7 +53,7 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "updated_at",   null: false, comment: "更新日時"
   end
 
-  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "roles", force: :cascade, comment: "ロールマスタ" do |t|
     t.string   "code",                    null: false, comment: "コード"
@@ -60,9 +63,9 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "updated_at",              null: false, comment: "更新日時"
   end
 
-  add_index "roles", ["code"], name: "index_roles_on_code", unique: true
-  add_index "roles", ["created_at"], name: "index_roles_on_created_at"
-  add_index "roles", ["updated_at"], name: "index_roles_on_updated_at"
+  add_index "roles", ["code"], name: "index_roles_on_code", unique: true, using: :btree
+  add_index "roles", ["created_at"], name: "index_roles_on_created_at", using: :btree
+  add_index "roles", ["updated_at"], name: "index_roles_on_updated_at", using: :btree
 
   create_table "sessions", force: :cascade, comment: "セッションデータ" do |t|
     t.string   "session_id", null: false, comment: "セッションID"
@@ -71,9 +74,9 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "updated_at", null: false, comment: "更新日時"
   end
 
-  add_index "sessions", ["created_at"], name: "index_sessions_on_created_at"
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  add_index "sessions", ["created_at"], name: "index_sessions_on_created_at", using: :btree
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "users", force: :cascade, comment: "ユーザーマスタ" do |t|
     t.string   "key",                                 null: false, comment: "固有キー"
@@ -110,24 +113,26 @@ ActiveRecord::Schema.define(version: 20141121172122) do
     t.datetime "deleted_at",                                       comment: "削除日時"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["created_at"], name: "index_users_on_created_at"
-  add_index "users", ["deleted_at", "facebook_uid"], name: "index_users_on_deleted_at_and_facebook_uid", unique: true
-  add_index "users", ["deleted_at", "google_uid"], name: "index_users_on_deleted_at_and_google_uid", unique: true
-  add_index "users", ["deleted_at", "key"], name: "index_users_on_deleted_at_and_key", unique: true
-  add_index "users", ["deleted_at", "twitter_uid"], name: "index_users_on_deleted_at_and_twitter_uid", unique: true
-  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at"
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["name"], name: "index_users_on_name"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
-  add_index "users", ["updated_at"], name: "index_users_on_updated_at"
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["created_at"], name: "index_users_on_created_at", using: :btree
+  add_index "users", ["deleted_at", "facebook_uid"], name: "index_users_on_deleted_at_and_facebook_uid", unique: true, using: :btree
+  add_index "users", ["deleted_at", "google_uid"], name: "index_users_on_deleted_at_and_google_uid", unique: true, using: :btree
+  add_index "users", ["deleted_at", "key"], name: "index_users_on_deleted_at_and_key", unique: true, using: :btree
+  add_index "users", ["deleted_at", "twitter_uid"], name: "index_users_on_deleted_at_and_twitter_uid", unique: true, using: :btree
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+  add_index "users", ["updated_at"], name: "index_users_on_updated_at", using: :btree
 
   create_table "users_roles", force: :cascade, comment: "ユーザー：ロール" do |t|
     t.integer "user_id", null: false, comment: "ユーザーID"
     t.integer "role_id", null: false, comment: "ロールID"
   end
 
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", unique: true
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", unique: true, using: :btree
 
+  add_foreign_key "users_roles", "roles"
+  add_foreign_key "users_roles", "users"
 end
