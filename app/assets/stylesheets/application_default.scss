@@ -43,7 +43,7 @@ a.noext[target="_blank"]:after {
 }
 
 .form-control {
-  color: @text-color;
+  color: $text-color;
 }
 ::-webkit-input-placeholder, {
     color: #bbb !important;
@@ -55,7 +55,7 @@ a.noext[target="_blank"]:after {
 .footer {
   color: #aaa;
   font-size: 12px;
-  border-top: 1px solid @gray-lighter;
+  border-top: 1px solid $gray-lighter;
   padding: 20px 0;
   background: #fff;
 }
@@ -75,7 +75,7 @@ h1 {
 h2 {
   font-size: 18px;
   line-height: 1.2em;
-  border-bottom: 1px solid @gray-lighter;
+  border-bottom: 1px solid $gray-lighter;
   margin: 20px 0 10px 0;
   padding: 7px 0;
   small {
@@ -95,6 +95,6 @@ h3 {
 
 .navbar-nav {
   .avatar {
-    height: @navbar-height - @navbar-padding-vertical * 2;
+    height: $navbar-height - $navbar-padding-vertical * 2;
   }
 }

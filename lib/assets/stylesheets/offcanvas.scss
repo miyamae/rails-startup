@@ -2,7 +2,7 @@
  * Off Canvas
  * --------------------------------------------------
  */
-@media (max-width: @screen-xs-max) {
+@media (max-width: $screen-xs-max) {
   .row-offcanvas {
     position: relative;
     -webkit-transition: all .25s ease-out;

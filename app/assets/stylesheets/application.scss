@@ -1,0 +1,18 @@
+//= require font-awesome
+//= depend_on application_default
+
+@import "bootstrap_sass/bootstrap";
+@import "offcanvas";
+
+// Application defalut style
+@import "application_default";
+
+// Desktops/Tablets screen size
+//@media (min-width: $screen-sm-min) {
+//  @import "application_desktop";
+//}
+
+// Phones screen size
+//@media (max-width: $screen-xs-max) {
+//  @import "application_mobile";
+//}
