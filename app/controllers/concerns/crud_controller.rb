@@ -2,22 +2,43 @@
 #
 # class UserController < ApplicationController
 #   include CrudController
-#   model User             # Target model
 #   permit :name, :email   # Strong Parameters
 #   destroy :cautious      # Destroy mode
 #   search: :name, :bio    # Keyword search fields
+#
+#   # Target model
+#   model User
+#   # or filtered
+#   source -> { User.enabled }
+#   # or
+#   def source
+#     super -> { @site.users }
+#   end
 
 module CrudController
   extend ActiveSupport::Concern
 
   module ClassMethods
     @@model = {}
+    @@source = {}
     @@permit = {}
     @@destroy = {}
     @@search = {}
 
+    def source(value=nil)
+      if value
+        @@source[self] = value
+        model(value.call.klass) unless model
+      end
+      return @@source[self]
+    end
+
     def model(value=nil)
-      @@model[self] ||= value
+      if value
+        @@model[self] = value
+        source(-> { value.all }) unless source
+      end
+      return @@model[self]
     end
 
     def permit(*values)
@@ -41,6 +62,10 @@ module CrudController
     end
   end
 
+  def source(value=nil)
+    self.class.source(value).call
+  end
+
   def model(value=nil)
     self.class.model(value)
   end
@@ -61,11 +86,11 @@ module CrudController
     if params[:q]
       fields = self.class.search
       query = fields.map {|f| "upper(#{f}) LIKE ?"}.join(' OR ')
-      model.where(query + ' OR ' + query,
+      source.where(query + ' OR ' + query,
         *Array.new(fields.size, "%#{params[:q].upcase}%"),
         *Array.new(fields.size, "%#{str_to_sbytes(params[:q]).upcase}%"))
     else
-      model.all
+      source
     end
   end
 
