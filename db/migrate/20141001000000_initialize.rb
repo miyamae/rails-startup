@@ -52,12 +52,7 @@ class Initialize < ActiveRecord::Migration
 
       t.datetime :created_at, null: false, comment: '作成日時'
       t.datetime :updated_at, null: false, comment: '更新日時'
-      t.datetime :deleted_at,              comment: '削除日時'
     end
-    add_index :users, [:deleted_at, :key],          unique: true
-    add_index :users, [:deleted_at, :twitter_uid],  unique: true
-    add_index :users, [:deleted_at, :facebook_uid], unique: true
-    add_index :users, [:deleted_at, :google_uid],   unique: true
     add_index :users, :email
     add_index :users, :name
     add_index :users, :reset_password_token,        unique: true
@@ -65,7 +60,6 @@ class Initialize < ActiveRecord::Migration
     add_index :users, :unlock_token,                unique: true
     add_index :users, :created_at
     add_index :users, :updated_at
-    add_index :users, :deleted_at
 
     create_table :roles, comment: 'ロールマスタ' do |t|
       t.string    :code,        null: false, comment: 'コード'

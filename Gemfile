@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+ruby '2.2.1'
 
 gem 'rails', '~> 4.2.0'
 
@@ -12,7 +12,6 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'pg'
 gem 'i18n-js'
-gem 'paranoia'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
@@ -38,6 +37,7 @@ gem 'browser'
 gem 'garage', github: 'cookpad/garage'
 gem 'weak_parameters'
 gem 'whenever', require: false
+gem 'dalli'
 
 group :production, :staging do
   gem 'rails_12factor'

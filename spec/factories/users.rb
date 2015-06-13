@@ -34,22 +34,16 @@
 #  note                   :text                                    # メモ
 #  created_at             :datetime         not null               # 作成日時
 #  updated_at             :datetime         not null               # 更新日時
-#  deleted_at             :datetime                                # 削除日時
 #
 # Indexes
 #
-#  index_users_on_confirmation_token           (confirmation_token) UNIQUE
-#  index_users_on_created_at                   (created_at)
-#  index_users_on_deleted_at                   (deleted_at)
-#  index_users_on_deleted_at_and_facebook_uid  (deleted_at,facebook_uid) UNIQUE
-#  index_users_on_deleted_at_and_google_uid    (deleted_at,google_uid) UNIQUE
-#  index_users_on_deleted_at_and_key           (deleted_at,key) UNIQUE
-#  index_users_on_deleted_at_and_twitter_uid   (deleted_at,twitter_uid) UNIQUE
-#  index_users_on_email                        (email)
-#  index_users_on_name                         (name)
-#  index_users_on_reset_password_token         (reset_password_token) UNIQUE
-#  index_users_on_unlock_token                 (unlock_token) UNIQUE
-#  index_users_on_updated_at                   (updated_at)
+#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
+#  index_users_on_created_at            (created_at)
+#  index_users_on_email                 (email)
+#  index_users_on_name                  (name)
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_unlock_token          (unlock_token) UNIQUE
+#  index_users_on_updated_at            (updated_at)
 #
 
 FactoryGirl.define do

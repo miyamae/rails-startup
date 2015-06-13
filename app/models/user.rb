@@ -34,22 +34,16 @@
 #  note                   :text                                    # メモ
 #  created_at             :datetime         not null               # 作成日時
 #  updated_at             :datetime         not null               # 更新日時
-#  deleted_at             :datetime                                # 削除日時
 #
 # Indexes
 #
-#  index_users_on_confirmation_token           (confirmation_token) UNIQUE
-#  index_users_on_created_at                   (created_at)
-#  index_users_on_deleted_at                   (deleted_at)
-#  index_users_on_deleted_at_and_facebook_uid  (deleted_at,facebook_uid) UNIQUE
-#  index_users_on_deleted_at_and_google_uid    (deleted_at,google_uid) UNIQUE
-#  index_users_on_deleted_at_and_key           (deleted_at,key) UNIQUE
-#  index_users_on_deleted_at_and_twitter_uid   (deleted_at,twitter_uid) UNIQUE
-#  index_users_on_email                        (email)
-#  index_users_on_name                         (name)
-#  index_users_on_reset_password_token         (reset_password_token) UNIQUE
-#  index_users_on_unlock_token                 (unlock_token) UNIQUE
-#  index_users_on_updated_at                   (updated_at)
+#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
+#  index_users_on_created_at            (created_at)
+#  index_users_on_email                 (email)
+#  index_users_on_name                  (name)
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_unlock_token          (unlock_token) UNIQUE
+#  index_users_on_updated_at            (updated_at)
 #
 
 #= User accounts
@@ -59,8 +53,6 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :key
-
-  acts_as_paranoid
 
   include Garage::Representer
   include Garage::Authorizable
@@ -96,17 +88,17 @@ class User < ActiveRecord::Base
   uuid_attached_file :image
 
   validates :email, presence: true
-  validates :email, uniqueness: { scope: :deleted_at, allow_blank: true }
+  validates :email, uniqueness: { allow_blank: true }
   validates :password, confirmation: true
   validates :password, length: { minimum: 8, allow_blank: true }
   validates :name, length: { maximum: 30, allow_blank: true }
-  validates :name, uniqueness: { scope: :deleted_at, allow_blank: true }
+  validates :name, uniqueness: { allow_blank: true }
   validates :nick_name, length: { maximum: 30, allow_blank: true }
   validates :bio, length: { maximum: 1000, allow_blank: true }
   validates :note, length: { maximum: 1000, allow_blank: true }
-  validates :twitter_uid, uniqueness: { scope: :deleted_at, allow_blank: true }
-  validates :facebook_uid, uniqueness: { scope: :deleted_at, allow_blank: true }
-  validates :google_uid, uniqueness: { scope: :deleted_at, allow_blank: true }
+  validates :twitter_uid, uniqueness: { allow_blank: true }
+  validates :facebook_uid, uniqueness: { allow_blank: true }
+  validates :google_uid, uniqueness: { allow_blank: true }
 
   # Permissins for API (:index)
   def self.build_permissions(perms, other, target)
