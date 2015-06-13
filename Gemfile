@@ -35,6 +35,7 @@ gem 'migration_comments'
 gem 'mail-iso-2022-jp'
 gem 'browser'
 gem 'garage', github: 'cookpad/garage'
+gem 'garage-doorkeeper'
 gem 'weak_parameters'
 gem 'whenever', require: false
 gem 'dalli'
