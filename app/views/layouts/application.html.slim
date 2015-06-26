@@ -74,8 +74,10 @@ html
                   | MENU
               - if @title && request.path != root_path
                 .page-header
+                  .pull-right
+                    = yield :pagetool
                   h1
-                    = @title
+                    => @title
                     - if @subtitle
                       small = @subtitle
               == yield
@@ -83,8 +85,10 @@ html
           .container.content
             - if @title && request.path != root_path
               .page-header
+                .pull-right
+                  = yield :pagetool
                 h1
-                  = @title
+                  => @title
                   - if @subtitle
                     small = @subtitle
             == yield
@@ -108,11 +112,6 @@ html
           .col-sm-8
             = Const::COPYRIGHT
           .col-sm-4
-            ul
-              li
-                a href="/privacy" = t 'views.static_pages.privacy.title'
-              li
-                a href=contact_index_path = t 'views.contact.title'
 
     = render 'partial/legacy_browsers'
     = javascript_include_tag 'application'
