@@ -1,19 +1,19 @@
-.box.box-danger
-  .box-header
-    h3.box-title
+- if record.persisted?
+  .panel.panel-danger
+    .panel-heading
       = t 'crud.destroy.title', model: record.class.model_name.human
-  .box-body
-    = t 'crud.destroy.guide_html'
-    = form_tag url_for(action: :destroy, id: record), method: :delete, class: 'destroy-form' do
-      input type="hidden" name="id" value="#{record}"
-      .checkbox
-        label
-          input> type="checkbox" name="confirmed" value="on"
-          = t 'crud.destroy.agree'
-      .row
-        .form-group.col-sm-4
-          input type="password" name="password" class="form-control" placeholder=User.human_attribute_name(:password)
-      button.btn.btn-danger data-confirm=t('crud.destroy.confirm_html', model: record.class.model_name.human, name: record)
-        span.fa.fa-trash-o
-          | &nbsp;
-          = t 'crud.destroy.submit'
+    .panel-body
+      = t 'crud.destroy.guide_html'
+      = form_tag url_for(controller: controller_name, action: :destroy, id: record), method: :delete, class: 'destroy-form' do
+        input type="hidden" name="id" value="#{record}"
+        .checkbox
+          label
+            input#destroy-agree> type="checkbox" name="confirmed" value="on"
+            = t 'crud.destroy.agree'
+        .row
+          .form-group.col-sm-4
+            input#destroy-password type="password" name="password" class="form-control" placeholder=User.human_attribute_name(:password)
+        button.btn.btn-danger data-confirm=t('crud.destroy.confirm', model: record.class.model_name.human, name: record)
+          span.fa.fa-trash-o
+            | &nbsp;
+            = t 'crud.destroy.submit'

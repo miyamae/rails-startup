@@ -1,1 +1,3 @@
-= link_to raw('<span class="fa fa-trash-o"></span> ' + t('crud.new.destroy.title')), { action: :destroy, id: record }, class: 'btn btn-danger btn-sm', method: :delete, data: t('views.destroy.confirm_html', model: record.class.model_name.human, name: record))
+- if record.persisted?
+  p.text-right
+    = link_to raw('<span class="fa fa-trash-o"></span> ' + t('crud.destroy.submit')), { controller: controller_name, action: :destroy, id: record }, class: 'btn btn-danger btn-sm', method: :delete, data: {confirm: t('crud.destroy.confirm', model: record.class.model_name.human, name: record)}
