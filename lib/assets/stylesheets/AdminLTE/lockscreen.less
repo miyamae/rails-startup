@@ -1,86 +1,68 @@
 /*
-    Page: locked screen
-*/
-
-/* ADD THIS CLASS TO THE <HTML> TAG */
+ * Page: Lock Screen
+ * -----------------
+ */
+/* ADD THIS CLASS TO THE <BODY> TAG */
 .lockscreen {
-    background: url(../img/blur-background09.jpg) repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: @gray;
 }
-
-/* Remove the background from the body element */
-.lockscreen > body {
-    background: transparent;
+.lockscreen-logo {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 300;
+  a {
+    color: #444;
+  }
 }
-
-/* We will put the dynamically generated digital clock here */
-.lockscreen .headline {
-    color: #fff;
-    text-shadow: 1px 3px 5px rgba(0,0,0,0.5);
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased !important;
-    opacity: 0.8;
-    margin: 10px 0 30px 0;
-    font-size: 90px;    
+.lockscreen-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 10%;
 }
-
-@media screen and (max-width: @screen-xs) {
-    .lockscreen .headline {
-        font-size: 60px;
-        margin-bottom: 40px;
-    }
-}
-
 /* User name [optional] */
 .lockscreen .lockscreen-name {
-    text-align: center;
-    font-weight: 600;
-    font-size: 16px;
+  text-align: center;
+  font-weight: 600;  
 }
-
 /* Will contain the image and the sign in form */
 .lockscreen-item {
-    padding: 0;
-    background: #fff;
-    position: relative;
-    .border-radius(4px);
-    .clearfix();    
-    margin: 10px auto;
-    width: 290px;
+  .border-radius(4px);
+  padding: 0;
+  background: #fff;
+  position: relative;
+  margin: 10px auto 30px auto;
+  width: 290px;
 }
-
 /* User image */
-.lockscreen-item > .lockscreen-image {
-    position: absolute;
-    left: -10px;
-    top: -30px;
-    background: #fff;
-    padding: 10px;
+.lockscreen-image {
+  .border-radius(50%);
+  position: absolute;
+  left: -10px;
+  top: -25px;
+  background: #fff;
+  padding: 5px;  
+  z-index: 10;
+  > img {
     .border-radius(50%);
-    z-index: 10;
-    > img {
-        width: 70px;
-        height: 70px;
-        .border-radius(50%);
-    }
+    width: 70px;
+    height: 70px;    
+  }
 }
 
 /* Contains the password input and the login button */
-.lockscreen-item > .lockscreen-credentials {
-    margin-left: 80px;
-    input {
-        border: 0 !important;
-    }
-    .btn {
-        background-color: #fff;
-        border: 0;
-    }
+.lockscreen-credentials {
+  margin-left: 70px;
+  .form-control {
+    border: 0 !important;
+  }
+  .btn {
+    background-color: #fff;
+    border: 0;
+    padding: 0 10px;
+  }
 }
-/* Extra to give the user an option to navigate the website [optional]*/
-.lockscreen-link {    
-    margin-top: 30px;
-    text-align: center;
+
+.lockscreen-footer {
+  margin-top: 10px;
 }

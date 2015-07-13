@@ -1,49 +1,48 @@
+/*
+ * Component: Callout
+ * ------------------
+ */
 
-/* 
-    Component: callout
-------------------------
-*/
-
-// Base styles (regardless of theme) 
+// Base styles (regardless of theme)
 .callout {
-    margin: 0 0 20px 0;
-    padding: 15px 30px 15px 15px;
-    border-left: 5px solid #eee;
+  .border-radius(3px);
+  margin: 0 0 20px 0;
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
+  a {
+    color: #fff;
+    text-decoration: underline;
+    &:hover {
+      color: #eee;
+    }
+  }
+  h4 {
+    margin-top: 0;
+    font-weight: 600;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  code,
+  .highlight {
+    background-color: #fff;
+  }
 
-    h4 {
-        margin-top: 0;
-    }
-    p:last-child {
-        margin-bottom: 0;
-    }
-    code,
-    .highlight {
-        background-color: #fff;
-    }
-
-    // Themes for different contexts 
-    &.callout-danger {
-        background-color: #fcf2f2;
-        border-color: #dFb5b4;
-    }
-    &.callout-warning {
-        background-color: #fefbed;
-        border-color: #f1e7bc;
-    }
-    &.callout-info {
-        background-color: #f0f7fd;
-        border-color: #d0e3f0;
-    }
-    // h4 header themes 
-    &.callout-danger h4 {
-        color: #B94A48;
-    }
-
-    &.callout-warning h4 {
-        color: #C09853;
-    }
-
-    &.callout-info h4 {
-        color: #3A87AD;
-    }
-} 
+  // Themes for different contexts
+  &.callout-danger {
+    &:extend(.bg-red);
+    border-color: darken(@red, 10%);
+  }
+  &.callout-warning {
+    &:extend(.bg-yellow);
+    border-color: darken(@yellow, 10%);
+  }
+  &.callout-info {
+    &:extend(.bg-aqua);
+    border-color: darken(@aqua, 10%);
+  }
+  &.callout-success {
+    &:extend(.bg-green);
+    border-color: darken(@green, 10%);
+  }
+}

@@ -32,7 +32,7 @@ ja:
       submit: 削除
       agree: 理解しました
       guide_html: "<p>実行すると関連するデータも含めて削除され、元に戻すことはできません。</p>"
-      confirm_html: "%{model}「%{name}」を削除します。関連するデータも削除されます。<br>実行すると元に戻すことはできません。"
+      confirm: "%{model}「%{name}」を削除します。関連するデータも削除されます。\n実行すると元に戻すことはできません。"
       required_confirm: 削除に同意してください。
       invalid_password: パスワードが違います。
       done: "%{model}「%{name}」を削除しました。"

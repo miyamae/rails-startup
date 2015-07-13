@@ -16,20 +16,19 @@
 
 - else
   .box
-    .box-body.no-padding
-      .table-responsive
-        table.table.table-hover.silent-link
-          thead
-            tr
-              th = User.model_name.human
-              th.text-right = User.human_attribute_name(:created_at)
-          tbody
-            - @records.each do |record|
-              tr onclick="location.href='#{admin_user_path(record)}';" style="cursor:pointer;" class=('warning' unless record.confirmed_at)
-                td
-                  => image_tag record.image(:avatar_sm), width: 24, height: 24, alt: record.screen_name
-                  = link_to record, admin_user_path(record)
-                td.text-right
-                  = l record.created_at
+    .box-body.no-padding.table-responsive
+      table.table.table-hover.silent-link
+        thead
+          tr
+            th = User.model_name.human
+            th.text-right = User.human_attribute_name(:created_at)
+        tbody
+          - @records.each do |record|
+            tr onclick="location.href='#{admin_user_path(record)}';" style="cursor:pointer;" class=('warning' unless record.confirmed_at)
+              td
+                => image_tag record.image(:avatar_sm), width: 24, height: 24, alt: record.screen_name
+                = link_to record, admin_user_path(record)
+              td.text-right
+                = l record.created_at
 
   = render 'partial/paginate', records: @records
