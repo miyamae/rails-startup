@@ -27,7 +27,7 @@ class Session < ActiveRecord::Base
     if created.is_a?(String)
       created = created.split.inject { |count, unit| count.to_i.send(unit) }
     end
-    delete_all "updated_at < '#{updated.ago.to_s(:db)}' OR created_at < '#{created.ago.to_s(:db)}'"
+    delete_all(['updated_at < ? OR created_at < ?', updated.ago.to_s(:db), created.ago.to_s(:db)])
   end
 
 end

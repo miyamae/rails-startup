@@ -77,5 +77,5 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
   gem 'capistrano-rbenv'
-  gem 'brakeman'
+  gem 'brakeman', require: false
 end
