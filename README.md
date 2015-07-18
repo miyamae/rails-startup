@@ -11,14 +11,14 @@ Base for usual Rails applications.
 * Devise & OmniAuth & CanCanCan - authentication
 * Paperclip - File upload (local or S3)
 * Garage - REST API with OAuth
+* AdminLTE - Admin user interface
 * RSpec & Turnip & Poltergeist - E2E testing
 * Capistrano - deploying
 * Contact form
 * Static content pages
-* Admin interface
 * I18n
-* support Travis CI or CircleCI
-* support Heroku
+* CircleCI - Continuous Integration
+* Heroku - PaaS
 
 ## Demo
 
