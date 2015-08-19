@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.2'
+ruby '2.2.3'
 
 gem 'rails', '~> 4.2.0'
 
@@ -10,6 +10,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'unicorn'
 gem 'pg'
 gem 'i18n-js'
 gem 'devise'

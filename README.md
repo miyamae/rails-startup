@@ -7,6 +7,7 @@ Base for usual Rails applications.
 
 ## Description
 
+* Unicorn - Application Server
 * Bootstrap & AdminLTE & Font Awasome - CSS framework
 * Devise & OmniAuth & CanCanCan - authentication
 * Paperclip - File upload (local or S3)

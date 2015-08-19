@@ -32,6 +32,9 @@ uploads_storage: "file"
 #google_client_id:
 #google_client_secret:
 
+# Unicorn
+#unicorn_worker_process: 5
+
 # Database
 #db_adapter: "postgresql"
 #db_encoding: "unicode"
