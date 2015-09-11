@@ -127,10 +127,10 @@ class ApplicationController < ActionController::Base
   def all_toutf8!(var)
     if var.is_a?(Array)
       var.each { |v| all_toutf8!(v) }
-    elsif is_a?(Hash)
+    elsif var.is_a?(Hash)
       var.each { |k, v| all_toutf8!(v) }
     elsif var.is_a?(String)
-      var.replace(var.encode('utf-8'))
+      var.replace(var.encode('UTF-8', invalid: :replace, undef: :replace))
     end
   end
 
