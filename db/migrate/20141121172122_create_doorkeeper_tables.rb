@@ -7,6 +7,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration
       t.string  :uid,          null: false, comment: 'アプリケーションID'
       t.string  :secret,       null: false, comment: 'シークレット'
       t.text    :redirect_uri, null: false, comment: 'コールバックURL'
+      t.string  :scopes,       null: false, comment: 'スコープ', default: ''
       t.datetime :created_at,  null: false, comment: '作成日時'
       t.datetime :updated_at,  null: false, comment: '更新日時'
     end
