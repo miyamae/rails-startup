@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
   # Set user identification to session
   def set_session_uuid
     if session[:session_uuid].blank?
-      session[:session_uuid] = UUIDTools::UUID.random_create.to_s
+      session[:session_uuid] = SecureRandom.uuid
     end
   end
 

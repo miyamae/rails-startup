@@ -455,7 +455,6 @@ GEM
       rack
       raindrops (~> 0.7)
     uniform_notifier (1.9.0)
-    uuidtools (2.1.5)
     warden (1.2.3)
       rack (>= 1.0)
     weak_parameters (0.2.2)
@@ -541,7 +540,6 @@ DEPENDENCIES
   turnip
   uglifier
   unicorn
-  uuidtools
   weak_parameters
   whenever
 
