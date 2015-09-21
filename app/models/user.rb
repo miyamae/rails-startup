@@ -84,9 +84,6 @@ class User < ActiveRecord::Base
     content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'],
     message: I18n.t('errors.messages.invalid_content_type')
 
-  include PaperclipUuidFilename
-  uuid_attached_file :image
-
   validates :email, presence: true
   validates :email, uniqueness: { allow_blank: true }
   validates :password, confirmation: true

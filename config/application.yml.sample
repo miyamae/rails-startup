@@ -9,9 +9,6 @@ email: "SampleApp <support@example.com>"
 # Destination for internal error notifications
 system_email: "root@localhost"
 
-# Using SSL on user authentication and admin features
-use_ssl: "false"
-
 # SMTP server
 smtp_host: "localhost"
 smtp_port: "25"
